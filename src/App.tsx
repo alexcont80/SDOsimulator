@@ -1,3 +1,5 @@
+import { OFFICIAL_CATALOG_DATA } from './data/officialCatalog';
+import { CodeSearchModal } from './components/CodeSearchModal';
 import React, { useState } from 'react';
 import { 
   Building2, 
@@ -17,6 +19,7 @@ import { GoogleDriveIntegrationModal } from './components/GoogleDriveModal';
 export default function App() {
   const [activeTab, setActiveTab] = useState<'theory' | 'practice'>('practice');
   const [isDriveModalOpen, setIsDriveModalOpen] = useState(false);
+  const [catalogOpen,setCatalogOpen]=useState(false);
   const [currentReportToExport, setCurrentReportToExport] = useState<{ title: string; content: string }>({
     title: 'Report_SDO_Transizione',
     content: ''
@@ -44,17 +47,18 @@ export default function App() {
                     Tutor SDO ICD-10-IM & CIPI
                   </span>
                   <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-blue-900/90 text-blue-300 border border-blue-700">
-                    v. 2025
+                    Cataloghi 2026.09.16-r2
                   </span>
                 </div>
                 <p className="text-xs text-slate-400">
-                  Ambiente di addestramento per Medici Compilatori (DM 23/10/2025 • NSIS-CLASS)
+                  {OFFICIAL_CATALOG_DATA.length.toLocaleString('it-IT')} righe ministeriali caricate · ICD-10-IM 2.2 / CIPI 2.1
                 </p>
               </div>
             </div>
 
             {/* Right Nav actions */}
             <div className="flex items-center gap-2">
+              <button type="button" onClick={()=>setCatalogOpen(true)} className="bg-blue-700 hover:bg-blue-600 px-3 py-2 rounded text-xs font-semibold">Cerca nei cataloghi</button>
               <button
                 id="header-drive-btn"
                 onClick={() => setIsDriveModalOpen(true)}
@@ -102,7 +106,7 @@ export default function App() {
             {/* Legal Notice Indicator */}
             <div className="hidden md:flex items-center gap-1.5 text-[11px] text-slate-400">
               <Scale className="w-3.5 h-3.5 text-slate-500" />
-              <span>Entrata in vigore: 1° gennaio 2027</span>
+              <span>Cataloghi per sperimentazione · casi in revisione</span>
             </div>
           </div>
         </div>
@@ -123,7 +127,7 @@ export default function App() {
           <div>
             <strong>Playground per Medici Compilatori di Scheda di Dimissione Ospedaliera (SDO)</strong>
             <div className="text-[11px] text-slate-400">
-              Riferimenti normativi: DM 23 ottobre 2025 • FAD ISS "NSIS-CLASS" • ICD-10-IM & CIPI v. 2025.
+              Riferimenti normativi: DM 23 ottobre 2025 • FAD ISS "NSIS-CLASS" • ICD-10-IM & CIPI Cataloghi 2026.09.16-r2.
             </div>
           </div>
           <div className="text-[11px] text-slate-400 text-center sm:text-right">
@@ -131,6 +135,8 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      <CodeSearchModal isOpen={catalogOpen} onClose={()=>setCatalogOpen(false)} />
 
       {/* Google Drive Modal */}
       <GoogleDriveIntegrationModal
