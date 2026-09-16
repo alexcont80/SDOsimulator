@@ -1,0 +1,10 @@
+import {OFFICIAL_CATALOG_DATA,isActiveOn} from '../src/data/officialCatalog';
+import {CLINICAL_CASES} from '../src/data';
+import {normalizeCode} from '../src/services/catalogSearch';
+const date='2026-09-16';
+const active=OFFICIAL_CATALOG_DATA.filter(e=>isActiveOn(e,date));
+const keys=new Set(active.map(e=>`${e.system}:${normalizeCode(e.code)}`));
+const parents=new Set(active.map(e=>`${e.system}:${e.code}`));
+const findings=CLINICAL_CASES.flatMap(c=>[c.solution.icd10.primaryDiagnosis,...c.solution.icd10.secondaryDiagnoses,...c.solution.icd10.procedures].filter(e=>!keys.has(`${e.system}:${normalizeCode(e.code)}`)).map(e=>({caseId:c.id,code:e.code,system:e.system,reason:'Assente dagli elenchi importati alla data di riferimento; verificare fonte e copertura, non convertire automaticamente.'})));
+const orphanParents=active.filter(e=>e.hierarchy.parentCode&&!parents.has(`${e.system}:${e.hierarchy.parentCode}`)).map(e=>({code:e.code,parent:e.hierarchy.parentCode,sourceRow:e.source?.row}));
+console.log(JSON.stringify({referenceDate:date,importedRows:OFFICIAL_CATALOG_DATA.length,activeRows:active.length,activeTerminalRows:active.filter(e=>e.terminal).length,unresolvedSourceParents:orphanParents,caseOccurrencesNotFound:findings.length,findings},null,2));

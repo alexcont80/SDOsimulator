@@ -23,19 +23,19 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
   currentCaseContext
 }) => {
   const guidedExamples = getGuidedExamples();
-  const [selectedExampleId, setSelectedExampleId] = useState<string | 'custom'>('GUIDA-SCOMP-01');
+  const [selectedExampleId, setSelectedExampleId] = useState<string | 'custom'>('custom');
 
   // Form State
   const [setting, setSetting] = useState<string>('ricovero');
   const [flusso, setFlusso] = useState<string>('SDO');
-  const [diagnosiFinaleDoc, setDiagnosiFinaleDoc] = useState<string>('scompenso_acuto_ivs');
-  const [acuzie, setAcuzie] = useState<string>('acuta');
+  const [diagnosiFinaleDoc, setDiagnosiFinaleDoc] = useState<string>('non_definita');
+  const [acuzie, setAcuzie] = useState<string>('non_documentata');
   const [condizioniAssociate, setCondizioniAssociate] = useState<string[]>([]);
   const [nonDocumentatoCondizioni, setNonDocumentatoCondizioni] = useState<boolean>(true);
   const [procedureEseguite, setProcedureEseguite] = useState<string[]>([]);
-  const [accessoChirurgico, setAccessoChirurgico] = useState<string>('percutaneo');
+  const [accessoChirurgico, setAccessoChirurgico] = useState<string>('non_documentato');
   const [dispositiviImpiantati, setDispositiviImpiantati] = useState<string[]>([]);
-  const [cpapApplicata, setCpapApplicata] = useState<boolean>(true);
+  const [cpapApplicata, setCpapApplicata] = useState<boolean>(false);
   const [insufficienzaRespDocumentata, setInsufficienzaRespDocumentata] = useState<boolean>(false);
   const [antibiogrammaResistenzaDoc, setAntibiogrammaResistenzaDoc] = useState<boolean>(false);
   const [noteTestuali, setNoteTestuali] = useState<string>('');
@@ -47,6 +47,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
 
   const handleSelectExample = (ex: GuidedCaseExample) => {
     setSelectedExampleId(ex.id);
+    setDispositiviImpiantati([]); setAntibiogrammaResistenzaDoc(false); setAccessoChirurgico('non_documentato'); setNoteTestuali('');
     if (ex.id === 'GUIDA-SCOMP-01') {
       setSetting('ricovero');
       setFlusso('SDO');
@@ -70,7 +71,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
     } else if (ex.id === 'GUIDA-SCOMP-03') {
       setSetting('PS/OBI senza ricovero');
       setFlusso('PS/OBI');
-      setDiagnosiFinaleDoc('non_definita');
+      setDiagnosiFinaleDoc('sintomo_dispnea');
       setAcuzie('acuta');
       setCpapApplicata(false);
       setInsufficienzaRespDocumentata(false);
@@ -118,7 +119,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
   };
 
   const handleApply = () => {
-    if (!proposalResult) return;
+    if (!proposalResult || !proposalResult.primaryDiagnosis || proposalResult.missingInformation.length || !proposalResult.scoringStatus.scoringEnabled) return;
     onApplyProposal(proposalResult);
     onClose();
   };
@@ -139,7 +140,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
               <div className="flex items-center gap-2">
                 <h3 className="font-bold text-lg text-white">Codifica un Caso (Guida Interattiva)</h3>
                 <span className="text-[11px] bg-indigo-500/30 text-indigo-200 px-2 py-0.5 rounded-full border border-indigo-400/30">
-                  Assistente Metodologico ISS / DM 23/10/2025
+                  Assistente didattico TutorSDO in revisione
                 </span>
               </div>
               <p className="text-xs text-slate-300 mt-0.5">
@@ -177,6 +178,10 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
             id="btn-custom-mode"
             onClick={() => {
               setSelectedExampleId('custom');
+              setSetting('ricovero'); setFlusso('SDO'); setDiagnosiFinaleDoc('non_definita'); setAcuzie('non_documentata');
+              setCondizioniAssociate([]); setNonDocumentatoCondizioni(true); setProcedureEseguite([]);
+              setAccessoChirurgico('non_documentato'); setDispositiviImpiantati([]); setCpapApplicata(false);
+              setInsufficienzaRespDocumentata(false); setAntibiogrammaResistenzaDoc(false); setNoteTestuali('');
               setProposalResult(null);
               setActiveStep('form');
             }}
@@ -186,7 +191,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
                 : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-300'
             }`}
           >
-            Simulazione Libera / Caso Corrente
+            Nuovo caso libero (azzera dati)
           </button>
         </div>
 
@@ -284,6 +289,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
                       <option value="frattura_femore">Frattura chiusa collo del femore [S72.001]</option>
                       <option value="sintomo_dispnea">Dispnea isolata senza diagnosi definitiva accertata [R06.0]</option>
                       <option value="sospetto_escluso">Sospetto IMA escluso dopo osservazione OBI [Z03.4]</option>
+                      <option value="altra">Altra diagnosi documentata (da specificare)</option>
                       <option value="non_definita">Non definita al termine del contatto (Sintomo Rxx)</option>
                     </select>
                   </div>
@@ -291,7 +297,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
                   <div>
                     <label className="text-xs font-semibold text-slate-600 block mb-1">Caratterizzazione dell'Acuzie:</label>
                     <div className="grid grid-cols-3 gap-2">
-                      {['acuta', 'cronica', 'riacutizzata'].map((ac) => (
+                      {['non_documentata', 'acuta', 'cronica', 'riacutizzata'].map((ac) => (
                         <button
                           key={ac}
                           type="button"
@@ -347,7 +353,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
 
                   {[
                     { id: 'ipertensione', label: 'Ipertensione primaria [I10]' },
-                    { id: 'shock_cardiogeno', label: 'Shock cardiogeno (MCC) [R57.0]' },
+                    { id: 'shock_cardiogeno', label: 'Shock cardiogeno [R57.0]' },
                     { id: 'fa_parossistica', label: 'FA parossistica [I48.0]' },
                     { id: 'irc_stadio1', label: 'Nefropatia ipertensiva st.1 [I12.00]' }
                   ].map((cond) => (
@@ -433,8 +439,9 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
                           onChange={(e) => setAccessoChirurgico(e.target.value)}
                           className="w-full text-xs p-1.5 bg-white border border-slate-300 rounded"
                         >
-                          <option value="percutaneo">Endovascolare trans-femorale (B) [35.21.4B]</option>
-                          <option value="transapicale">Chirurgico trans-apicale (D) [35.21.6D]</option>
+                          <option value="non_documentato">Accesso non documentato</option>
+                          <option value="transfemorale">Transfemorale</option>
+                          <option value="transapicale">Transapicale</option>
                         </select>
                       </div>
                     )}
@@ -496,7 +503,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
                       <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
                       <div className="space-y-1">
                         <div className="font-bold text-sm text-emerald-300">
-                          Proposta Metodologica Convalidata per Revisione Medica
+                          Ipotesi didattica non validata
                         </div>
                         <p className="text-xs text-slate-300">
                           {proposalResult.scoringStatus.reason}
@@ -543,7 +550,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
                   <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-3">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
                       <Layers className="w-4 h-4 text-slate-600" />
-                      Diagnosi Secondarie Convalidate ({proposalResult.secondaryDiagnoses.length})
+                      Diagnosi secondarie candidate ({proposalResult.secondaryDiagnoses.length})
                     </span>
 
                     {proposalResult.secondaryDiagnoses.length === 0 ? (
@@ -608,7 +615,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
                   <div className="bg-slate-100 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
                     <span className="font-bold text-slate-800 flex items-center gap-1.5">
                       <BookOpen className="w-3.5 h-3.5 text-blue-600" />
-                      Regole Ufficiali Applicate alla Soluzione:
+                      Regole editoriali richiamate (ID interni):
                     </span>
                     <ul className="list-disc pl-5 space-y-1 text-slate-700">
                       {proposalResult.rulesApplied.map((r, i) => (
@@ -642,6 +649,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
 
                     <button
                       id="apply-proposal-to-sdo-btn"
+                      disabled={!proposalResult.primaryDiagnosis || proposalResult.missingInformation.length > 0 || !proposalResult.scoringStatus.scoringEnabled}
                       onClick={handleApply}
                       className="px-6 py-2.5 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-xl text-xs flex items-center gap-2 shadow-sm transition-colors"
                     >
@@ -658,7 +666,7 @@ export const GuidedCaseModal: React.FC<GuidedCaseModalProps> = ({
         {/* Footer */}
         <div className="p-3 bg-slate-100 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
           <div>
-            Metodo: <strong>Tutor SDO • Motore Regole Ufficiali ISS / NSIS-CLASS</strong>
+            Metodo: <strong>Tutor SDO • Regole didattiche derivate dal corso, da verificare</strong>
           </div>
           <button
             onClick={onClose}

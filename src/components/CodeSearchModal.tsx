@@ -1,4 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import { SOURCE_CATALOGS, isActiveOn, todayISO } from '../data/officialCatalog';
+import { CATALOG_STATUS } from '../data/catalogStatus';
+import React, { useState, useMemo, useEffect, useDeferredValue } from 'react';
 import { Search, X, BookOpen, Layers, CheckCircle, ArrowRight, Info, ShieldAlert, Sparkles, PlusCircle } from 'lucide-react';
 import { searchCatalog, getCodeDetails } from '../services/catalogSearch';
 import { CatalogEntry } from '../types';
@@ -15,6 +17,9 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
   onSelectCode
 }) => {
   const [query, setQuery] = useState('');
+  const deferredQuery=useDeferredValue(query);
+  const [date,setDate] = useState(todayISO);
+  const [page,setPage] = useState(0);
   const [systemFilter, setSystemFilter] = useState<'ALL' | 'ICD-10-IM' | 'CIPI'>('ALL');
   const [terminalOnly, setTerminalOnly] = useState(false);
   const [selectedEntry, setSelectedEntry] = useState<CatalogEntry | null>(null);
@@ -22,17 +27,21 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
 
   const results = useMemo(() => {
     return searchCatalog({
-      query,
+      query:deferredQuery,
       system: systemFilter,
       terminalOnly,
-      limit: 40
+      limit: Number.MAX_SAFE_INTEGER,
+      date
     });
-  }, [query, systemFilter, terminalOnly]);
+  }, [deferredQuery, systemFilter, terminalOnly, date]);
 
+  useEffect(() => { setSelectedEntry(null); setPage(0); }, [query, systemFilter, terminalOnly, date, isOpen]);
+
+  const visibleResults=results.slice(page*50,(page+1)*50);
   if (!isOpen) return null;
 
   const handleApply = () => {
-    if (!selectedEntry || !onSelectCode) return;
+    if (query !== deferredQuery || !selectedEntry || !onSelectCode || !results.includes(selectedEntry) || !selectedEntry.terminal || !isActiveOn(selectedEntry,date) || (selectedEntry.system === 'CIPI') !== (insertRole === 'procedure')) return;
     onSelectCode(selectedEntry, insertRole);
     onClose();
   };
@@ -51,18 +60,18 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="font-bold text-lg text-white">Cerca un Codice nei Cataloghi Ufficiali</h3>
+                <h3 className="font-bold text-lg text-white">Ricerca codici ministeriali</h3>
                 <span className="text-[11px] bg-blue-500/20 text-blue-200 px-2 py-0.5 rounded-full border border-blue-400/30">
-                  DM 23/10/2025 • v. 2025
+                  ICD-10-IM 2.2 · CIPI 2.1
                 </span>
               </div>
               <p className="text-xs text-slate-300 mt-0.5">
-                Ricerca rapida tra oltre 70.000 diagnosi ICD-10-IM e procedure CIPI con gerarchia, inclusioni e terminalità.
+                {CATALOG_STATUS.reason}
               </p>
             </div>
           </div>
           <button
-            id="close-code-search-btn"
+            id="close-code-search-btn" aria-label="Chiudi ricerca"
             onClick={onClose}
             className="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
           >
@@ -105,7 +114,7 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
-                Tutti i Cataloghi ({results.length})
+                Tutti i sistemi ({results.length} risultati)
               </button>
               <button
                 id="filter-icd10-btn"
@@ -142,11 +151,17 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
                 onChange={(e) => setTerminalOnly(e.target.checked)}
                 className="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500"
               />
-              <span>Solo codici terminali utilizzabili</span>
+              <span>Solo codici terminali</span>
             </label>
           </div>
         </div>
 
+        <div className="px-4 py-2 flex flex-wrap items-center justify-between gap-2 text-xs border-b">
+          <label>Data di dimissione / riferimento <input aria-label="Data di riferimento catalogo" type="date" value={date} onChange={e=>setDate(e.target.value)} className="border rounded p-1 ml-2" /></label>
+          <span>{results.length} risultati · pagina {page+1} di {Math.max(1,Math.ceil(results.length/50))}</span>
+          <button type="button" disabled={page===0} onClick={()=>{setPage(p=>p-1);setSelectedEntry(null);}}>Precedente</button>
+          <button type="button" disabled={(page+1)*50>=results.length} onClick={()=>{setPage(p=>p+1);setSelectedEntry(null);}}>Successiva</button>
+        </div>
         {/* Content Body: Split View (List + Details) */}
         <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-hidden min-h-[380px]">
           {/* List Column */}
@@ -158,11 +173,13 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
                 <p className="text-xs text-slate-400 mt-1">Prova con una parola chiave diversa o verifica i filtri.</p>
               </div>
             ) : (
-              results.map((entry) => {
-                const isSelected = selectedEntry?.code === entry.code;
+              visibleResults.map((entry) => {
+                const isSelected = selectedEntry === entry;
                 return (
                   <div
-                    key={entry.code}
+                    role="button" tabIndex={0}
+                    onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setSelectedEntry(entry);setInsertRole(entry.system==='CIPI'?'procedure':'primary');}}}
+                    key={entry.source?.id ?? entry.code}
                     id={`search-result-${entry.code.replace('.', '-')}`}
                     onClick={() => {
                       setSelectedEntry(entry);
@@ -228,7 +245,7 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
                     <span className={`text-xs px-2 py-0.5 rounded font-medium ${
                       selectedEntry.terminal ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
                     }`}>
-                      {selectedEntry.terminal ? 'Codice Terminale Ufficiale' : 'Rubrica / Categoria Padre'}
+                      {selectedEntry.terminal ? 'Terminale nell’elenco ministeriale' : 'Rubrica / Categoria Padre'}
                     </span>
                   </div>
                   <h4 className="font-mono text-xl font-bold text-slate-900 mt-1">
@@ -239,12 +256,21 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
                   </p>
                 </div>
 
+                {selectedEntry.source && <div className="text-xs text-slate-600 space-y-1">
+                  <a href={selectedEntry.source.url} target="_blank" rel="noreferrer" className="text-blue-700 underline">Fonte ministeriale · {selectedEntry.validity.version}</a>
+                  <p>{selectedEntry.source.sheet}, riga {selectedEntry.source.row}</p>
+                  <p>Validità: {selectedEntry.validity.from} – {selectedEntry.validity.to}</p>
+                  {selectedEntry.daggerType !== 'nessuna' && <p>Daga: {selectedEntry.daggerType}</p>}
+                  {selectedEntry.isAsterisk && <p>Codice asterisco: verificare associazione e regole del flusso.</p>}
+                  {!!selectedEntry.associatedCodes?.length && <p>Codici associati nella fonte: {selectedEntry.associatedCodes.join('; ')}</p>}
+                </div>}
                 {/* Hierarchy Breadcrumbs */}
                 <div className="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs space-y-1.5">
                   <div className="font-semibold text-slate-700 flex items-center gap-1.5">
                     <Layers className="w-3.5 h-3.5 text-blue-600" />
                     Gerarchia Tassonomica
                   </div>
+                  {selectedEntry.hierarchy.parentCode && <button className="text-blue-700 underline" onClick={()=>{setQuery(selectedEntry.hierarchy.parentCode!);}}>Apri padre {selectedEntry.hierarchy.parentCode}</button>}
                   {selectedEntry.hierarchy.chapter && (
                     <div className="text-slate-600 pl-4 border-l-2 border-slate-300">
                       <span className="font-medium text-slate-700">Capitolo:</span> {selectedEntry.hierarchy.chapter}
@@ -298,6 +324,9 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
                   </div>
                 )}
 
+                <details className="text-xs text-slate-600"><summary className="cursor-pointer">Attribuzione e licenza della fonte</summary>
+                  {SOURCE_CATALOGS.find(s=>s.system===selectedEntry.system)?.preface.flat().filter(v=>typeof v==='string').map((v,i)=><p key={i} className="whitespace-pre-line mt-2">{v}</p>)}
+                </details>
                 {/* Transcoding ICD-9 */}
                 {selectedEntry.transcodingICD9 && (
                   <div className="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
@@ -352,11 +381,12 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
 
                     <button
                       id="apply-code-to-sdo-btn"
+                      disabled={query !== deferredQuery || !selectedEntry.terminal || !isActiveOn(selectedEntry,date) || (selectedEntry.system === 'CIPI') !== (insertRole === 'procedure')}
                       onClick={handleApply}
                       className="mt-3 w-full py-2.5 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-xl text-xs flex items-center justify-center gap-2 shadow-sm transition-colors"
                     >
                       <PlusCircle className="w-4 h-4" />
-                      Inserisci {selectedEntry.code} nella Scheda SDO
+                      Inserisci candidato {selectedEntry.code} nella scheda
                     </button>
                   </div>
                 )}
@@ -376,7 +406,7 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
         {/* Footer */}
         <div className="p-3 bg-slate-100 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
           <div>
-            Catalogo: <strong className="text-slate-700">ICD-10-IM & CIPI 2025 (DM 23/10/2025)</strong>
+            Catalogo: <strong className="text-slate-700">Elenchi ministeriali importati integralmente</strong>
           </div>
           <button
             onClick={onClose}

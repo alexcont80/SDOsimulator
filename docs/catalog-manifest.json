@@ -1,0 +1,38 @@
+{
+  "retrieved": "2026-09-16",
+  "scope": "Elenco sistematico ICD-10-IM senza capitolo XX; elenco sistematico CIPI. Indice alfabetico non incluso nei due XLSX. Prototipi per sperimentazione.",
+  "sources": [
+    {
+      "system": "ICD-10-IM",
+      "file": "_ElencoSist_ICD10IM_v.Gamma2.2.xlsx",
+      "release": "Gamma 2.2",
+      "url": "https://www.salute.gov.it/new/sites/default/files/_ElencoSist_ICD10IM_v.Gamma2.2.xlsx",
+      "sha256": "4e7baf73d35005660faa26769f4d738e9fa16027926a4fd58d12b67cd6729f68",
+      "sheet": "ES ICD10IM VGamma 2.2 Prototipo",
+      "firstRow": 4,
+      "rowCount": 14799,
+      "rowsSha256": "ee8cf5de109f566cc220520e5de945d0eff88402826f25a14584de89b98a3ffb",
+      "statusCounts": {
+        "Attivo": 14783,
+        "Storico": 16
+      },
+      "terminalCount": 12051
+    },
+    {
+      "system": "CIPI",
+      "file": "_ElencoSist_CIPI_v.Gamma2.1.xlsx",
+      "release": "Gamma 2.1",
+      "url": "https://www.salute.gov.it/new/sites/default/files/_ElencoSist_CIPI_v.Gamma2.1.xlsx",
+      "sha256": "54be2b127031f1f0c293a4011f31109223e0f2a116d73033bb95792f355221c0",
+      "sheet": "CIPI - v. 2.1 - Maggio 2026",
+      "firstRow": 8,
+      "rowCount": 15185,
+      "rowsSha256": "ffb14eb5b233a7445f71c7722ab9363210f3571e973cd7ef32e49e38d42fe3fb",
+      "statusCounts": {
+        "Attivo": 15182,
+        "Storico": 3
+      },
+      "terminalCount": 10691
+    }
+  ]
+}

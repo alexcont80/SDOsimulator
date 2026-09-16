@@ -16,6 +16,7 @@ export interface OfficialCodeItem {
 }
 
 export interface CatalogEntry {
+  source?: {url:string; sheet:string; row:number; sha256:string; id:string; status:string; sourceType:string};
   code: string;
   title: string;
   system: 'ICD-10-IM' | 'CIPI';
