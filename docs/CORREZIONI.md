@@ -1,5 +1,7 @@
 # Revisione TutorSDO — 16 settembre 2026
 
+**Rapporto della prima revisione, conservato come storico. Per lo stato attuale e l’importazione riuscita dei 29.984 record consultare CATALOGHI_IMPORTATI.md.**
+
 ## Esito
 Il repository contiene 160 casi e soltanto 41 voci di catalogo editoriale: non è un catalogo completo. L'audit sintattico rileva 450 occorrenze di codici incompatibili con il formato atteso nelle soluzioni ICD-10-IM/CIPI. Il dettaglio riproducibile è in audit-cases.json. Le occorrenze non equivalgono a 450 codici distinti e non dimostrano, da sole, la provenienza americana. I codici sintatticamente plausibili restano da validare.
 

@@ -1,8 +1,6 @@
-/** Release gate: no official source files have been reconciled yet. */
-export const CATALOG_STATUS = Object.freeze({
-  complete: false,
-  reconciled: false,
-  release: null as string | null,
-  sourceUrl: 'https://www.salute.gov.it/new/it/tema/assistenza-ospedaliera-sdo/documentazione-tecnica',
-  reason: 'Cataloghi ufficiali completi non ancora importati e riconciliati. Ricerca limitata a un campione editoriale non validato; rilascio per codifica effettiva bloccato.'
+export const CATALOG_STATUS=Object.freeze({
+ complete:false, importedSystematicsComplete:true, reconciled:true,
+ release:'ICD-10-IM Gamma 2.2 / CIPI Gamma 2.1',
+ sourceUrl:'https://www.salute.gov.it/new/it/tema/assistenza-ospedaliera-sdo/documentazione-tecnica/',
+ reason:'Elenchi sistematici ministeriali importati integralmente: 29.984 righe. ICD-10-IM senza capitolo XX; indice alfabetico non incluso. Prototipi per sperimentazione. Casi e proposte guidate ancora da validare.'
 });

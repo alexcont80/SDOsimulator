@@ -1,4 +1,5 @@
-import { LEGACY_CATALOG_DATA, GUIDED_EXAMPLES_DATA } from '../data/catalog';
+import { GUIDED_EXAMPLES_DATA } from '../data/catalog';
+import { OFFICIAL_CATALOG_DATA, isActiveOn, todayISO } from '../data/officialCatalog';
 import { CatalogEntry, GuidedCaseExample, GuidedProposalResult } from '../types';
 
 export interface SearchOptions {
@@ -7,10 +8,17 @@ export interface SearchOptions {
   terminalOnly?: boolean;
   specialtyTag?: string;
   limit?: number;
+  date?: string;
+  includeHistorical?: boolean;
 }
 
 export const normalizeSearch = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 export const normalizeCode = (value: string) => value.toUpperCase().replace(/[.\s-]/g, '');
+
+const searchIndex = new Map(OFFICIAL_CATALOG_DATA.map(entry=>[entry, {
+ code:normalizeCode(entry.code), title:normalizeSearch(entry.title),
+ terms:[entry.title,...(entry.synonyms||[]),...(entry.inclusions||[])].map(normalizeSearch)
+}]));
 
 // A bounded typo match for words only: never fuzzy-match code identifiers.
 function oneEdit(a: string, b: string): boolean {
@@ -35,13 +43,12 @@ export function searchCatalog(options: SearchOptions): CatalogEntry[] {
   const tokens = query.split(/\s+/).filter(Boolean);
   const codeLike = /\d/.test(query) || /^[a-z]$/i.test(query);
   const limit = options.limit === undefined ? 50 : Math.max(0, options.limit);
-  return LEGACY_CATALOG_DATA.filter(entry =>
+  return OFFICIAL_CATALOG_DATA.filter(entry =>
+    (options.includeHistorical || isActiveOn(entry, options.date ?? todayISO())) &&
     (!options.system || options.system === 'ALL' || entry.system === options.system) &&
     (!options.terminalOnly || entry.terminal)
   ).map(entry => {
-    const code = normalizeCode(entry.code);
-    const title = normalizeSearch(entry.title);
-    const terms = [title, ...(entry.synonyms || []), ...(entry.inclusions || [])].map(normalizeSearch);
+    const {code,title,terms} = searchIndex.get(entry)!;
     let score = !query ? 1 : 0;
     if (query && code === codeQuery) score = 100;
     else if (query && codeQuery && code.startsWith(codeQuery)) score = 90;
@@ -54,8 +61,9 @@ export function searchCatalog(options: SearchOptions): CatalogEntry[] {
   }).filter(row => row.score > 0).sort((a,b) => b.score - a.score || a.entry.code.localeCompare(b.entry.code)).slice(0,limit).map(row => row.entry);
 }
 
-export function getCodeDetails(code: string, system?: CatalogEntry['system']): CatalogEntry | undefined {
-  return LEGACY_CATALOG_DATA.find(entry => normalizeCode(entry.code) === normalizeCode(code) && (!system || entry.system === system));
+export function getCodeDetails(code: string, system?: CatalogEntry['system'], date=todayISO()): CatalogEntry | undefined {
+  const matches=OFFICIAL_CATALOG_DATA.filter(entry => normalizeCode(entry.code) === normalizeCode(code) && (!system || entry.system === system) && isActiveOn(entry,date));
+  return matches.length===1?matches[0]:undefined;
 }
 
 export function getGuidedExamples(): GuidedCaseExample[] {
@@ -274,7 +282,7 @@ export function generateGuidedProposal(input: GuidedFormInput): GuidedProposalRe
   }
   secondaryDiags.forEach(d => { d.confirmed = false; });
   procs.forEach(p => { p.confirmed = false; });
-  missingInfo.push('Catalogo completo non riconciliato: proposte editoriali non validate, non applicabili alla scheda.');
+  missingInfo.push('Proposte guidate e casi editoriali ancora da revisionare contro i cataloghi ministeriali acquisiti: applicazione automatica sospesa.');
 
   return {
     primaryDiagnosis: primaryDiag,

@@ -1,6 +1,6 @@
 import type { CatalogEntry, UserSubmission } from '../types';
 import { normalizeCode } from './catalogSearch';
-import { LEGACY_CATALOG_DATA } from '../data/catalog';
+import { OFFICIAL_CATALOG_DATA } from '../data/officialCatalog';
 import { CATALOG_STATUS } from '../data/catalogStatus';
 
 export interface ValidationIssue { field: string; level: 'error' | 'unverified'; message: string }
@@ -28,9 +28,10 @@ export function checkSubmission(submission: UserSubmission): SubmissionCheck {
     const key = `${row.system}:${code}`;
     if (seen.has(key)) issues.push({field:row.field,level:'error',message:'Codice duplicato nella stessa classificazione.'});
     seen.add(key);
-    const entry = LEGACY_CATALOG_DATA.find(e => e.system === row.system && normalizeCode(e.code) === code);
-    if (entry && !entry.terminal) issues.push({field:row.field,level:'unverified',message:'Il campione indica una rubrica non terminale: consultare i discendenti nel sistematico ufficiale.'});
-    else issues.push({field:row.field,level:'unverified',message:entry ? 'Presente solo nel campione editoriale: esistenza, descrizione e terminalità da verificare nella release ufficiale.' : 'Non presente nel campione; l’assenza non prova che il codice sia inesistente. Serve il catalogo completo.'});
+    const entries = OFFICIAL_CATALOG_DATA.filter(e => e.system === row.system && normalizeCode(e.code) === code);
+    if (!entries.length) issues.push({field:row.field,level:'unverified',message:'Non trovato negli elenchi importati. Verificare classificazione, data e copertura della fonte (ICD-10-IM senza capitolo XX). Non convertire per analogia.'});
+    else if (entries.every(e=>!e.terminal)) issues.push({field:row.field,level:'error',message:'Rubrica non terminale nell’elenco ministeriale: selezionare il codice terminale pertinente.'});
+    else issues.push({field:row.field,level:'unverified',message:'Presente nell’elenco ministeriale. Verificare validità alla data di dimissione, descrizione, note e appropriatezza clinica: la presenza non certifica la risposta.'});
     if (row.system === 'CIPI' && code.endsWith('W')) issues.push({field:row.field,level:'unverified',message:'Verificare associazione esplicita a procedura non-W compatibile; la sola presenza di un altro codice non basta.'});
   }
   issues.push({field:'Valutazione',level:'unverified',message:CATALOG_STATUS.reason});
