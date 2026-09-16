@@ -1,0 +1,7 @@
+Aggiorna TutorSDO dal ramo fix/cataloghi-validazione di alexcont80/SDOsimulator, preservando UI, 8 branche, 160 casi e integrazione Drive. Leggi docs/CORREZIONI.md e docs/audit-cases.json. Mantieni le correzioni e i test; non riattivare punteggi o diciture di validazione per far apparire completo il prodotto.
+
+Priorità: importare i cataloghi italiani integrali ICD-10-IM e CIPI da file ufficiali tracciati (URL, release, validità, licenza, hash), con indice, sistematico, note, esclusioni e terminalità. Riconcilia tutte le righe e documenta i conteggi. Non ampliare il campione con codici generati dall'AI o americani. Non troncare i codici segnalati nell'audit.
+
+Implementa ricerca rapida per codice, parole, sinonimi e refusi con risultati paginati, distinzione diagnosi/procedure, gerarchia e fonte puntuale. “Colecistite” deve trovare tutte le voci pertinenti presenti nella fonte completa, separate dalle procedure; nessun numero atteso inventato.
+
+Nel caso guidato chiedi i dati clinici mancanti senza dedurli da farmaci, CPAP o procedure. Separa errore, dato mancante e codice non verificabile. Ogni proposta deve esplicitare motivazione, fonte/versione e associazioni richieste. Revisiona i casi uno per uno, con evidenza verificabile, prima di riattivare valutazione e soluzioni utilizzabili. Aggiorna il controllo di rilascio solo dopo riconciliazione e revisione documentate; esegui test, TypeScript, build e prove interattive prima del deployment.

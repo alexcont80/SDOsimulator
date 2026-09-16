@@ -1,4 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import { LEGACY_CATALOG_DATA } from '../data/catalog';
+import { CATALOG_STATUS } from '../data/catalogStatus';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Search, X, BookOpen, Layers, CheckCircle, ArrowRight, Info, ShieldAlert, Sparkles, PlusCircle } from 'lucide-react';
 import { searchCatalog, getCodeDetails } from '../services/catalogSearch';
 import { CatalogEntry } from '../types';
@@ -25,14 +27,16 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
       query,
       system: systemFilter,
       terminalOnly,
-      limit: 40
+      limit: 200
     });
   }, [query, systemFilter, terminalOnly]);
+
+  useEffect(() => { setSelectedEntry(null); }, [query, systemFilter, terminalOnly, isOpen]);
 
   if (!isOpen) return null;
 
   const handleApply = () => {
-    if (!selectedEntry || !onSelectCode) return;
+    if (!selectedEntry || !onSelectCode || !results.includes(selectedEntry) || !selectedEntry.terminal) return;
     onSelectCode(selectedEntry, insertRole);
     onClose();
   };
@@ -51,18 +55,18 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="font-bold text-lg text-white">Cerca un Codice nei Cataloghi Ufficiali</h3>
+                <h3 className="font-bold text-lg text-white">Ricerca nel campione — catalogo completo mancante</h3>
                 <span className="text-[11px] bg-blue-500/20 text-blue-200 px-2 py-0.5 rounded-full border border-blue-400/30">
                   DM 23/10/2025 • v. 2025
                 </span>
               </div>
               <p className="text-xs text-slate-300 mt-0.5">
-                Ricerca rapida tra oltre 70.000 diagnosi ICD-10-IM e procedure CIPI con gerarchia, inclusioni e terminalità.
+                {LEGACY_CATALOG_DATA.length} voci editoriali caricate. {CATALOG_STATUS.reason}
               </p>
             </div>
           </div>
           <button
-            id="close-code-search-btn"
+            id="close-code-search-btn" aria-label="Chiudi ricerca"
             onClick={onClose}
             className="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
           >
@@ -105,7 +109,7 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
-                Tutti i Cataloghi ({results.length})
+                Tutti i sistemi ({results.length} risultati)
               </button>
               <button
                 id="filter-icd10-btn"
@@ -228,7 +232,7 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
                     <span className={`text-xs px-2 py-0.5 rounded font-medium ${
                       selectedEntry.terminal ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
                     }`}>
-                      {selectedEntry.terminal ? 'Codice Terminale Ufficiale' : 'Rubrica / Categoria Padre'}
+                      {selectedEntry.terminal ? 'Terminalità dichiarata nel campione, non verificata' : 'Rubrica / Categoria Padre'}
                     </span>
                   </div>
                   <h4 className="font-mono text-xl font-bold text-slate-900 mt-1">
@@ -356,7 +360,7 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
                       className="mt-3 w-full py-2.5 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-xl text-xs flex items-center justify-center gap-2 shadow-sm transition-colors"
                     >
                       <PlusCircle className="w-4 h-4" />
-                      Inserisci {selectedEntry.code} nella Scheda SDO
+                      Inserisci candidato {selectedEntry.code} nella scheda
                     </button>
                   </div>
                 )}
@@ -376,7 +380,7 @@ export const CodeSearchModal: React.FC<CodeSearchModalProps> = ({
         {/* Footer */}
         <div className="p-3 bg-slate-100 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
           <div>
-            Catalogo: <strong className="text-slate-700">ICD-10-IM & CIPI 2025 (DM 23/10/2025)</strong>
+            Catalogo: <strong className="text-slate-700">Campione editoriale non riconciliato</strong>
           </div>
           <button
             onClick={onClose}

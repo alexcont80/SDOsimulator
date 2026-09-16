@@ -1,0 +1,2708 @@
+{
+  "cases": 160,
+  "legacyEntries": 41,
+  "officialCatalogComplete": false,
+  "findings": [
+    {
+      "caseId": "meu-1",
+      "code": "CIPI-93.90",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-1",
+      "code": "CIPI-89.65",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-1",
+      "code": "CIPI-88.73",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-2",
+      "code": "CIPI-93.94",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-2",
+      "code": "CIPI-89.65",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-3",
+      "code": "T78.04XA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-3",
+      "code": "T78.3XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-3",
+      "code": "X23.0XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-3",
+      "code": "CIPI-99.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-3",
+      "code": "CIPI-96.70",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-4",
+      "code": "S00.03XA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-4",
+      "code": "W19.XXXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-4",
+      "code": "CIPI-89.52",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-4",
+      "code": "CIPI-86.59",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-5",
+      "code": "T58.01XA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-5",
+      "code": "X47.0XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-5",
+      "code": "CIPI-93.96",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-5",
+      "code": "CIPI-89.65",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-6",
+      "code": "CIPI-99.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-6",
+      "code": "CIPI-89.52",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-7",
+      "code": "CIPI-88.75",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-7",
+      "code": "CIPI-99.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-8",
+      "code": "S22.5XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-8",
+      "code": "S27.322A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-8",
+      "code": "S42.022A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-8",
+      "code": "V27.4XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-8",
+      "code": "CIPI-87.41",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-8",
+      "code": "CIPI-88.76",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-9",
+      "code": "CIPI-44.43",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-9",
+      "code": "CIPI-99.04",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-9",
+      "code": "CIPI-45.13",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-10",
+      "code": "CIPI-99.18",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-10",
+      "code": "CIPI-89.65",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-11",
+      "code": "CIPI-89.61",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-11",
+      "code": "CIPI-87.03",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-12",
+      "code": "T38.5X5A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-12",
+      "code": "CIPI-87.41",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-12",
+      "code": "CIPI-88.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-12",
+      "code": "CIPI-88.77",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-13",
+      "code": "CIPI-34.04",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-13",
+      "code": "CIPI-34.91",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-13",
+      "code": "CIPI-87.44",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-14",
+      "code": "T40.1X1A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-14",
+      "code": "CIPI-99.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-14",
+      "code": "CIPI-89.65",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-15",
+      "code": "S06.5X9A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-15",
+      "code": "T45.515A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-15",
+      "code": "W10.9XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-15",
+      "code": "CIPI-87.03",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-15",
+      "code": "CIPI-99.06",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-15",
+      "code": "CIPI-96.04",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-16",
+      "code": "CIPI-87.41",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-16",
+      "code": "CIPI-88.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-17",
+      "code": "CIPI-46.85",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-17",
+      "code": "CIPI-87.61",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-18",
+      "code": "S36.031A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-18",
+      "code": "W21.04XA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-18",
+      "code": "CIPI-88.01",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-18",
+      "code": "CIPI-88.76",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-19",
+      "code": "T68.XXXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-19",
+      "code": "X31.XXXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-19",
+      "code": "CIPI-99.85",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-19",
+      "code": "CIPI-89.52",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-20",
+      "code": "T40.5X1A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-20",
+      "code": "CIPI-99.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "meu-20",
+      "code": "CIPI-57.94",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-1",
+      "code": "CIPI-96.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-1",
+      "code": "CIPI-38.93",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-1",
+      "code": "CIPI-89.61",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-2",
+      "code": "CIPI-96.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-2",
+      "code": "CIPI-93.99",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-2",
+      "code": "CIPI-89.68",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-3",
+      "code": "CIPI-37.68",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-3",
+      "code": "CIPI-37.64",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-3",
+      "code": "CIPI-88.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-4",
+      "code": "S06.339A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-4",
+      "code": "V03.10XA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-4",
+      "code": "CIPI-01.16",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-4",
+      "code": "CIPI-96.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-4",
+      "code": "CIPI-31.1",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-5",
+      "code": "CIPI-02.21",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-5",
+      "code": "CIPI-39.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-6",
+      "code": "CIPI-39.95",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-6",
+      "code": "CIPI-38.95",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-6",
+      "code": "CIPI-96.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-7",
+      "code": "CIPI-99.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-7",
+      "code": "CIPI-96.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-7",
+      "code": "CIPI-31.1",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-8",
+      "code": "CIPI-99.81",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-8",
+      "code": "CIPI-96.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-8",
+      "code": "CIPI-89.14",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-9",
+      "code": "CIPI-31.1",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-9",
+      "code": "CIPI-33.24",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-9",
+      "code": "CIPI-96.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-10",
+      "code": "T39.1X2A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-10",
+      "code": "CIPI-96.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-10",
+      "code": "CIPI-01.16",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-10",
+      "code": "CIPI-99.07",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-11",
+      "code": "T88.6XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-11",
+      "code": "T48.1X5A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-11",
+      "code": "CIPI-99.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-11",
+      "code": "CIPI-96.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-12",
+      "code": "CIPI-37.0",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-12",
+      "code": "CIPI-37.49",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-12",
+      "code": "CIPI-88.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-13",
+      "code": "T21.31XA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-13",
+      "code": "T22.30XA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-13",
+      "code": "T59.811A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-13",
+      "code": "X00.0XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-13",
+      "code": "CIPI-86.09",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-13",
+      "code": "CIPI-96.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-13",
+      "code": "CIPI-33.22",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-14",
+      "code": "T88.3XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-14",
+      "code": "S02.600A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-14",
+      "code": "CIPI-99.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-14",
+      "code": "CIPI-99.85",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-14",
+      "code": "CIPI-96.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-15",
+      "code": "CIPI-99.04",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-15",
+      "code": "CIPI-99.07",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-15",
+      "code": "CIPI-99.05",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-15",
+      "code": "CIPI-99.06",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-15",
+      "code": "CIPI-96.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-16",
+      "code": "CIPI-89.14",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-16",
+      "code": "CIPI-96.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-16",
+      "code": "CIPI-99.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-17",
+      "code": "CIPI-99.14",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-17",
+      "code": "CIPI-96.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-18",
+      "code": "T43.012A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-18",
+      "code": "CIPI-99.62",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-18",
+      "code": "CIPI-96.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-18",
+      "code": "CIPI-99.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-19",
+      "code": "T81.718A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-19",
+      "code": "CIPI-99.10",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-19",
+      "code": "CIPI-99.60",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-19",
+      "code": "CIPI-96.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-20",
+      "code": "CIPI-93.11",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-20",
+      "code": "CIPI-89.15",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "icu-20",
+      "code": "CIPI-96.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-1",
+      "code": "CIPI-00.66",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-1",
+      "code": "CIPI-36.06",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-1",
+      "code": "CIPI-88.55",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-2",
+      "code": "CIPI-00.66",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-2",
+      "code": "CIPI-36.06",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-2",
+      "code": "CIPI-93.90",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-3",
+      "code": "CIPI-37.34",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-3",
+      "code": "CIPI-37.26",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-3",
+      "code": "CIPI-88.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-4",
+      "code": "CIPI-00.51",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-4",
+      "code": "CIPI-00.54",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-5",
+      "code": "CIPI-35.05",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-5",
+      "code": "CIPI-88.58",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-6",
+      "code": "CIPI-35.97",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-6",
+      "code": "CIPI-88.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-7",
+      "code": "CIPI-37.83",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-7",
+      "code": "CIPI-37.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-7",
+      "code": "CIPI-37.78",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-8",
+      "code": "CIPI-88.91",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-8",
+      "code": "CIPI-88.55",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-9",
+      "code": "CIPI-88.55",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-9",
+      "code": "CIPI-38.24",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-10",
+      "code": "CIPI-36.15",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-10",
+      "code": "CIPI-36.12",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-10",
+      "code": "CIPI-39.61",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-10",
+      "code": "CIPI-38.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-11",
+      "code": "CIPI-35.22",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-11",
+      "code": "CIPI-35.39",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-11",
+      "code": "CIPI-39.61",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-12",
+      "code": "CIPI-37.94",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-12",
+      "code": "CIPI-37.99",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-13",
+      "code": "CIPI-37.33",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-13",
+      "code": "CIPI-39.61",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-14",
+      "code": "CIPI-88.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-14",
+      "code": "CIPI-89.52",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-15",
+      "code": "CIPI-35.52",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-15",
+      "code": "CIPI-37.28",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-16",
+      "code": "CIPI-37.34",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-16",
+      "code": "CIPI-37.26",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-17",
+      "code": "CIPI-37.34",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-17",
+      "code": "CIPI-37.26",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-18",
+      "code": "CIPI-92.05",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-18",
+      "code": "CIPI-88.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-19",
+      "code": "CIPI-88.55",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-19",
+      "code": "CIPI-89.60",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-20",
+      "code": "CIPI-35.53",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-20",
+      "code": "CIPI-37.61",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "cardio-20",
+      "code": "CIPI-39.61",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-1",
+      "code": "CIPI-47.01",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-1",
+      "code": "CIPI-54.25",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-2",
+      "code": "CIPI-51.22",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-2",
+      "code": "CIPI-54.59",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-3",
+      "code": "CIPI-17.33",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-3",
+      "code": "CIPI-40.3",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-4",
+      "code": "CIPI-44.42",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-4",
+      "code": "CIPI-54.25",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-5",
+      "code": "CIPI-45.62",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-5",
+      "code": "CIPI-54.59",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-6",
+      "code": "CIPI-48.62",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-6",
+      "code": "CIPI-46.10",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-7",
+      "code": "CIPI-52.7",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-7",
+      "code": "CIPI-40.3",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-8",
+      "code": "CIPI-53.05",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-8",
+      "code": "CIPI-53.00",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-9",
+      "code": "CIPI-48.52",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-9",
+      "code": "CIPI-46.21",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-10",
+      "code": "CIPI-53.51",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-10",
+      "code": "CIPI-54.59",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-11",
+      "code": "CIPI-51.85",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-11",
+      "code": "CIPI-51.88",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-11",
+      "code": "CIPI-51.23",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-11",
+      "code": "CIPI-87.53",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-12",
+      "code": "CIPI-43.82",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-12",
+      "code": "CIPI-40.59",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-12",
+      "code": "CIPI-44.38",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-13",
+      "code": "CIPI-49.11",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-13",
+      "code": "CIPI-49.21",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-14",
+      "code": "CIPI-86.4",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-14",
+      "code": "CIPI-40.23",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-14",
+      "code": "CIPI-92.16",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-15",
+      "code": "CIPI-06.81",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-15",
+      "code": "CIPI-89.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-16",
+      "code": "CIPI-45.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-16",
+      "code": "CIPI-46.74",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-17",
+      "code": "CIPI-85.22",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-17",
+      "code": "CIPI-40.51",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-18",
+      "code": "S36.115A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-18",
+      "code": "S31.109A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-18",
+      "code": "X99.XXXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-18",
+      "code": "CIPI-50.61",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-18",
+      "code": "CIPI-54.12",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-18",
+      "code": "CIPI-54.19",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-19",
+      "code": "CIPI-50.91",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-19",
+      "code": "CIPI-88.76",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-20",
+      "code": "CIPI-42.7",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "surg-20",
+      "code": "CIPI-44.67",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-1",
+      "code": "S72.032A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-1",
+      "code": "W19.XXXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-1",
+      "code": "CIPI-81.51",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-2",
+      "code": "S72.141A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-2",
+      "code": "W01.0XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-2",
+      "code": "CIPI-79.15",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-3",
+      "code": "CIPI-81.54",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-4",
+      "code": "S83.512A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-4",
+      "code": "S83.212A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-4",
+      "code": "CIPI-81.45",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-4",
+      "code": "CIPI-81.47",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-4",
+      "code": "CIPI-80.26",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-5",
+      "code": "S52.532A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-5",
+      "code": "W01.0XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-5",
+      "code": "CIPI-79.32",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-6",
+      "code": "CIPI-81.51",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-7",
+      "code": "S82.851A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-7",
+      "code": "S93.431A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-7",
+      "code": "W10.9XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-7",
+      "code": "CIPI-79.36",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-8",
+      "code": "CIPI-83.63",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-8",
+      "code": "CIPI-81.83",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-8",
+      "code": "CIPI-80.21",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-9",
+      "code": "CIPI-80.51",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-10",
+      "code": "S82.101A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-10",
+      "code": "V29.9XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-10",
+      "code": "CIPI-79.36",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-10",
+      "code": "CIPI-78.07",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-11",
+      "code": "CIPI-77.51",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-11",
+      "code": "CIPI-77.56",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-12",
+      "code": "S42.301A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-12",
+      "code": "S44.21XA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-12",
+      "code": "CIPI-79.11",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-13",
+      "code": "T84.51XA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-13",
+      "code": "CIPI-80.05",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-13",
+      "code": "CIPI-84.56",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-13",
+      "code": "CIPI-80.85",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-14",
+      "code": "CIPI-81.08",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-14",
+      "code": "CIPI-84.51",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-14",
+      "code": "CIPI-03.09",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-15",
+      "code": "S82.201B",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-15",
+      "code": "S82.401B",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-15",
+      "code": "V29.9XXA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-15",
+      "code": "CIPI-78.17",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-15",
+      "code": "CIPI-79.66",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-16",
+      "code": "S62.001K",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-16",
+      "code": "M84.141A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-16",
+      "code": "CIPI-78.04",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-16",
+      "code": "CIPI-77.79",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-16",
+      "code": "CIPI-78.54",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-17",
+      "code": "CIPI-81.82",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-18",
+      "code": "S86.012A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-18",
+      "code": "CIPI-83.64",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-19",
+      "code": "M80.08XA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-19",
+      "code": "CIPI-81.66",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-20",
+      "code": "S32.401A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-20",
+      "code": "S73.011A",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-20",
+      "code": "V43.52XA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-20",
+      "code": "CIPI-79.39",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "orto-20",
+      "code": "CIPI-79.05",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-1",
+      "code": "CIPI-99.10",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-1",
+      "code": "CIPI-39.74",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-1",
+      "code": "CIPI-88.41",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-2",
+      "code": "CIPI-99.10",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-2",
+      "code": "CIPI-87.03",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-3",
+      "code": "CIPI-38.12",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-3",
+      "code": "CIPI-88.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-4",
+      "code": "CIPI-87.03",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-4",
+      "code": "CIPI-89.54",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-5",
+      "code": "CIPI-39.79",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-5",
+      "code": "CIPI-88.41",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-6",
+      "code": "CIPI-99.23",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-6",
+      "code": "CIPI-88.91",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-6",
+      "code": "CIPI-88.93",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-7",
+      "code": "CIPI-89.14",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-7",
+      "code": "CIPI-96.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-7",
+      "code": "CIPI-96.04",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-8",
+      "code": "CIPI-99.14",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-8",
+      "code": "CIPI-03.31",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-8",
+      "code": "CIPI-93.08",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-9",
+      "code": "CIPI-43.11",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-9",
+      "code": "CIPI-44.32",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-10",
+      "code": "CIPI-99.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-10",
+      "code": "CIPI-38.93",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-11",
+      "code": "CIPI-03.31",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-11",
+      "code": "CIPI-87.03",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-12",
+      "code": "CIPI-88.91",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-12",
+      "code": "CIPI-03.31",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-12",
+      "code": "CIPI-89.14",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-13",
+      "code": "CIPI-87.03",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-13",
+      "code": "CIPI-95.02",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-14",
+      "code": "CIPI-02.34",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-14",
+      "code": "CIPI-03.31",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-15",
+      "code": "CIPI-01.31",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-15",
+      "code": "CIPI-87.03",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-16",
+      "code": "CIPI-43.11",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-16",
+      "code": "CIPI-31.42",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-17",
+      "code": "CIPI-88.91",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-17",
+      "code": "CIPI-88.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-18",
+      "code": "CIPI-99.14",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-18",
+      "code": "CIPI-93.08",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-18",
+      "code": "CIPI-03.31",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-19",
+      "code": "CIPI-92.15",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-19",
+      "code": "CIPI-89.17",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-20",
+      "code": "CIPI-39.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "neuro-20",
+      "code": "CIPI-88.41",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-1",
+      "code": "CIPI-54.91",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-1",
+      "code": "CIPI-99.15",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-1",
+      "code": "CIPI-88.76",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-2",
+      "code": "CIPI-99.18",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-2",
+      "code": "CIPI-89.54",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-3",
+      "code": "CIPI-38.21",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-3",
+      "code": "CIPI-88.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-4",
+      "code": "CIPI-99.18",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-4",
+      "code": "CIPI-87.41",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-4",
+      "code": "CIPI-33.24",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-5",
+      "code": "CIPI-87.41",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-5",
+      "code": "CIPI-88.77",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-5",
+      "code": "CIPI-88.72",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-6",
+      "code": "CIPI-55.23",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-6",
+      "code": "CIPI-99.23",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-6",
+      "code": "CIPI-99.25",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-7",
+      "code": "CIPI-99.15",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-7",
+      "code": "CIPI-99.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-7",
+      "code": "CIPI-89.54",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-8",
+      "code": "CIPI-89.54",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-8",
+      "code": "CIPI-88.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-9",
+      "code": "CIPI-39.95",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-9",
+      "code": "CIPI-38.95",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-10",
+      "code": "CIPI-41.31",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-10",
+      "code": "CIPI-99.25",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-10",
+      "code": "CIPI-99.23",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-11",
+      "code": "CIPI-99.04",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-11",
+      "code": "CIPI-99.23",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-12",
+      "code": "CIPI-81.91",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-12",
+      "code": "CIPI-88.79",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-13",
+      "code": "CIPI-99.14",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-13",
+      "code": "CIPI-99.23",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-13",
+      "code": "CIPI-90.59",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-14",
+      "code": "CIPI-99.23",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-14",
+      "code": "CIPI-89.54",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-15",
+      "code": "CIPI-99.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-15",
+      "code": "CIPI-88.38",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-16",
+      "code": "CIPI-45.24",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-16",
+      "code": "CIPI-99.23",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-16",
+      "code": "CIPI-87.89",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-17",
+      "code": "CIPI-52.14",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-17",
+      "code": "CIPI-88.74",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-18",
+      "code": "CIPI-88.79",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-19",
+      "code": "CIPI-33.24",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-19",
+      "code": "CIPI-33.24",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-19",
+      "code": "CIPI-87.41",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-20",
+      "code": "CIPI-99.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-20",
+      "code": "CIPI-55.23",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-20",
+      "code": "CIPI-33.24",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "med-20",
+      "code": "CIPI-99.28",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-1",
+      "code": "CIPI-74.1",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-1",
+      "code": "CIPI-75.34",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-2",
+      "code": "O60.14X0",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-2",
+      "code": "CIPI-69.49",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-2",
+      "code": "CIPI-38.86",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-2",
+      "code": "CIPI-69.99",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-2",
+      "code": "CIPI-99.04",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-3",
+      "code": "O60.14X0",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-3",
+      "code": "CIPI-74.1",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-3",
+      "code": "CIPI-99.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-4",
+      "code": "O60.14X0",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-4",
+      "code": "CIPI-74.1",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-4",
+      "code": "CIPI-99.05",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-4",
+      "code": "CIPI-88.76",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-5",
+      "code": "CIPI-66.62",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-5",
+      "code": "CIPI-54.21",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-5",
+      "code": "CIPI-88.78",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-6",
+      "code": "O60.14X0",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-6",
+      "code": "CIPI-74.1",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-6",
+      "code": "CIPI-88.78",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-7",
+      "code": "CIPI-74.1",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-7",
+      "code": "CIPI-75.34",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-8",
+      "code": "CIPI-75.69",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-8",
+      "code": "CIPI-73.59",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-9",
+      "code": "CIPI-68.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-9",
+      "code": "CIPI-99.04",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-9",
+      "code": "CIPI-54.21",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-10",
+      "code": "CIPI-65.25",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-10",
+      "code": "CIPI-54.51",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-10",
+      "code": "CIPI-59.03",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-11",
+      "code": "CIPI-68.41",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-11",
+      "code": "CIPI-40.24",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-11",
+      "code": "CIPI-88.78",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-12",
+      "code": "CIPI-67.32",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-12",
+      "code": "CIPI-67.11",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-13",
+      "code": "CIPI-65.25",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-13",
+      "code": "CIPI-54.21",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-13",
+      "code": "CIPI-88.78",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-14",
+      "code": "T83.39XA",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-14",
+      "code": "CIPI-65.91",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-14",
+      "code": "CIPI-97.71",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-14",
+      "code": "CIPI-88.78",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-15",
+      "code": "CIPI-68.59",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-15",
+      "code": "CIPI-70.50",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-15",
+      "code": "CIPI-70.77",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-16",
+      "code": "CIPI-69.52",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-16",
+      "code": "CIPI-88.78",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-16",
+      "code": "CIPI-87.44",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-17",
+      "code": "O60.14X0",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-17",
+      "code": "CIPI-74.1",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-17",
+      "code": "CIPI-75.34",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-18",
+      "code": "O40.3XX0",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-18",
+      "code": "O60.14X0",
+      "system": "ICD-10-IM",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-18",
+      "code": "CIPI-73.4",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-18",
+      "code": "CIPI-73.09",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-18",
+      "code": "CIPI-73.59",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-19",
+      "code": "CIPI-68.29",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-19",
+      "code": "CIPI-68.12",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-20",
+      "code": "CIPI-67.59",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    },
+    {
+      "caseId": "ost-20",
+      "code": "CIPI-88.78",
+      "system": "CIPI",
+      "reason": "Formato incompatibile; possibile contaminazione da altra classificazione. Nessuna conversione automatica."
+    }
+  ],
+  "notice": "Controllo sintattico, non validazione clinica né riconciliazione completa. Anche codici sintatticamente compatibili possono essere errati."
+}

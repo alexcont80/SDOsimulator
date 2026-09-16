@@ -1,6 +1,7 @@
+// Legacy editorial sample. NOT an official, complete or reconciled catalog.
 import { CatalogEntry, GuidedCaseExample } from '../types';
 
-export const OFFICIAL_CATALOG_DATA: CatalogEntry[] = [
+export const LEGACY_CATALOG_DATA: CatalogEntry[] = [
   // ==========================================
   // ICD-10-IM DIAGNOSES (MALATTIE E CONDIZIONI)
   // ==========================================

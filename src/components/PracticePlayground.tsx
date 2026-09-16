@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { checkSubmission, SubmissionCheck } from '../services/validation';
+import { CATALOG_STATUS } from '../data/catalogStatus';
+import React, { useState, useEffect } from 'react';
 import { 
   HeartPulse, 
   Scissors, 
@@ -58,6 +60,8 @@ export const PracticePlayground: React.FC<PracticePlaygroundProps> = ({ onOpenDr
   ]);
 
   const [showDebriefing, setShowDebriefing] = useState(false);
+  const [validation, setValidation] = useState<SubmissionCheck | null>(null);
+  useEffect(() => { setValidation(null); setShowDebriefing(false); }, [primaryCode, primaryDesc, secondaryDiagnoses, procedures, selectedCaseId]);
   const [assistedAutofill, setAssistedAutofill] = useState(false);
 
   // Current active case
@@ -157,6 +161,7 @@ export const PracticePlayground: React.FC<PracticePlaygroundProps> = ({ onOpenDr
   };
 
   const handleApplyGuidedProposal = (proposal: GuidedProposalResult) => {
+    if (!proposal.primaryDiagnosis || proposal.missingInformation.length || !proposal.scoringStatus.scoringEnabled) return;
     if (proposal.primaryDiagnosis) {
       setPrimaryCode(proposal.primaryDiagnosis.code);
       setPrimaryDesc(proposal.primaryDiagnosis.title);
@@ -176,7 +181,8 @@ export const PracticePlayground: React.FC<PracticePlaygroundProps> = ({ onOpenDr
 
   const handleSubmitEvaluation = (e: React.FormEvent) => {
     e.preventDefault();
-    setShowDebriefing(true);
+    setValidation(checkSubmission({primaryDiagnosisCode: primaryCode, primaryDiagnosisDesc: primaryDesc, secondaryDiagnoses, procedureCodes: procedures}));
+    setShowDebriefing(false);
   };
 
   // Generate audit text report for Drive upload
@@ -184,7 +190,7 @@ export const PracticePlayground: React.FC<PracticePlaygroundProps> = ({ onOpenDr
     if (!currentCase) return '';
 
     return `===============================================================
-REPORT DI DEBRIEFING CLINICO SDO - TRANSIZIONE ICD-10-IM E CIPI
+BOZZA NON VALIDATA - DEBRIEFING DIDATTICO SDO
 Normativa: DM 23 ottobre 2025 | Fonte: FAD ISS NSIS-CLASS
 Data e ora: ${new Date().toLocaleString('it-IT')}
 ===============================================================
@@ -209,9 +215,9 @@ ${procedures.filter(p => p.code).map(p => `  * [${p.code}] ${p.desc}`).join('\n'
 ---------------------------------------------------------------
 CODIFICA UFFICIALE VALIDATA (ICD-10-IM & CIPI v. 2025):
 - Diagnosi Principale: [${currentCase.solution.icd10.primaryDiagnosis.code}] ${currentCase.solution.icd10.primaryDiagnosis.description}
-- Diagnosi Secondarie Validate:
+- Diagnosi secondarie proposte (da verificare):
 ${currentCase.solution.icd10.secondaryDiagnoses.map(d => `  * [${d.code}] ${d.description}${d.notes ? ` (${d.notes})` : ''}`).join('\n')}
-- Procedure Validate (CIPI):
+- Procedure proposte (da verificare):
 ${currentCase.solution.icd10.procedures.map(p => `  * [${p.code}] ${p.description}`).join('\n')}
 
 ---------------------------------------------------------------
@@ -252,12 +258,16 @@ ${currentCase.solution.chartDocumentationAdvice}
 
   return (
     <div className="space-y-6" id="practice-playground-view">
+      <div role="status" className="border border-amber-300 bg-amber-50 text-amber-950 rounded-xl p-4 text-sm">
+        <strong>Versione in revisione — non pronta per la codifica effettiva.</strong> {CATALOG_STATUS.reason}
+        <p>Le soluzioni preesistenti contengono incongruenze di classificazione: non sono risposte validate.</p>
+      </div>
       {/* Specialty Selector Bar */}
       <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
         <div className="flex items-center justify-between mb-4">
           <div>
             <h3 className="font-bold text-slate-900 text-sm">Seleziona Branca Specialistica (8 Discipline • 20 Casi Ciascuna)</h3>
-            <p className="text-xs text-slate-500">Casi clinici simulati con conformità al DM 23/10/2025 ed evidenza di CC/MCC, ICD-10-IM e CIPI</p>
+            <p className="text-xs text-slate-500">Casi clinici da revisionare contro i sistematici italiani e le regole del flusso</p>
           </div>
           <span className="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded font-medium border border-blue-100">
             DM 23/10/2025 • NSIS-CLASS
@@ -472,7 +482,7 @@ ${currentCase.solution.chartDocumentationAdvice}
                   <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold block">Attenzione per il Medico Compilatore:</span>
-                    <span>{currentCase.documentationGapsWarning}</span>
+                    <span>Nota editoriale da revisionare: {currentCase.documentationGapsWarning}</span>
                   </div>
                 </div>
               )}
@@ -514,16 +524,12 @@ ${currentCase.solution.chartDocumentationAdvice}
                   <button
                     type="button"
                     onClick={() => {
-                      setPrimaryCode(currentCase.solution.icd10.primaryDiagnosis.code);
-                      setPrimaryDesc(currentCase.solution.icd10.primaryDiagnosis.description);
-                      setSecondaryDiagnoses(currentCase.solution.icd10.secondaryDiagnoses.map(d => ({ code: d.code, desc: d.description })));
-                      setProcedures(currentCase.solution.icd10.procedures.map(p => ({ code: p.code, desc: p.description })));
-                      setAssistedAutofill(true);
+                      setShowDebriefing(true);
                     }}
                     className="text-xs font-semibold text-blue-700 hover:text-blue-900 flex items-center gap-1 bg-blue-50 px-2.5 py-1.5 rounded-md border border-blue-200"
                   >
                     <Sparkles className="w-3.5 h-3.5" />
-                    Suggerisci Codici
+                    Mostra soluzione da revisionare
                   </button>
                 </div>
               </div>
@@ -696,22 +702,27 @@ ${currentCase.solution.chartDocumentationAdvice}
                   className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs px-6 py-2.5 rounded-lg shadow-sm transition-colors"
                 >
                   <Send className="w-3.5 h-3.5" />
-                  Valida Codifica e Mostra Debriefing
+                  Controlla la risposta
                 </button>
               </div>
             </form>
 
-            {/* Debriefing & Feedback Validato */}
+            {validation && <section role="alert" className="border border-amber-300 bg-amber-50 rounded-xl p-4 text-sm">
+              <h4 className="font-bold">{validation.status === 'invalid' ? 'Errori nella risposta' : 'Risposta non valutabile con il catalogo disponibile'}</h4>
+              <ul>{validation.issues.map((issue,index) => <li key={index}><strong>{issue.field}:</strong> {issue.message}</li>)}</ul>
+              <p>Nessun punteggio assegnato. La soluzione editoriale è consultabile separatamente.</p>
+            </section>}
+            {/* Legacy solutions remain visible only on explicit request. */}
             {showDebriefing && (
               <div id="debriefing-section" className="bg-slate-900 text-white rounded-xl p-6 shadow-md space-y-6 border border-slate-800">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
                   <div>
                     <div className="inline-flex items-center gap-1.5 text-xs text-emerald-400 font-semibold uppercase tracking-wider mb-1">
                       <CheckCircle className="w-4 h-4 text-emerald-400" />
-                      Feedback Validato & Correzione del Tutor SDO
+                      Materiale editoriale in revisione
                     </div>
                     <h4 className="text-lg font-bold text-white">
-                      Soluzione Ufficiale & Confronto Metodologico
+                      Soluzione preesistente non validata
                     </h4>
                   </div>
 
@@ -733,7 +744,7 @@ ${currentCase.solution.chartDocumentationAdvice}
                 {/* 1. Codifica Ufficiale ICD-10-IM e CIPI */}
                 <div className="space-y-3">
                   <h5 className="text-xs font-bold text-blue-300 uppercase tracking-wide">
-                    1. Soluzione Corretta Ufficiale (Standard 2025)
+                    1. Bozza di soluzione — può contenere codici di altra classificazione
                   </h5>
                   <div className="bg-slate-800/80 rounded-lg p-4 border border-slate-700 space-y-3 text-xs">
                     <div>
@@ -744,7 +755,7 @@ ${currentCase.solution.chartDocumentationAdvice}
                     </div>
 
                     <div>
-                      <span className="text-slate-400 block font-semibold mb-1">Diagnosi Secondarie Validate:</span>
+                      <span className="text-slate-400 block font-semibold mb-1">Diagnosi secondarie proposte (da verificare):</span>
                       <div className="space-y-1.5">
                         {currentCase.solution.icd10.secondaryDiagnoses.map((d, i) => (
                           <div key={i} className="font-mono text-blue-200 bg-slate-900/60 p-2 rounded border border-slate-800 flex items-baseline gap-2">

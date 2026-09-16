@@ -1,4 +1,4 @@
-import { OFFICIAL_CATALOG_DATA, GUIDED_EXAMPLES_DATA } from '../data/catalog';
+import { LEGACY_CATALOG_DATA, GUIDED_EXAMPLES_DATA } from '../data/catalog';
 import { CatalogEntry, GuidedCaseExample, GuidedProposalResult } from '../types';
 
 export interface SearchOptions {
@@ -9,99 +9,53 @@ export interface SearchOptions {
   limit?: number;
 }
 
-export function searchCatalog(options: SearchOptions): CatalogEntry[] {
-  const query = options.query.trim().toLowerCase();
-  const system = options.system || 'ALL';
-  const terminalOnly = options.terminalOnly ?? false;
-  const limit = options.limit || 50;
+export const normalizeSearch = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+export const normalizeCode = (value: string) => value.toUpperCase().replace(/[.\s-]/g, '');
 
-  if (!query && system === 'ALL' && !options.specialtyTag) {
-    return OFFICIAL_CATALOG_DATA.slice(0, limit);
+// A bounded typo match for words only: never fuzzy-match code identifiers.
+function oneEdit(a: string, b: string): boolean {
+  if (Math.abs(a.length - b.length) > 1) return false;
+  if (a.length === b.length) {
+    const diff = [...a].map((v, i) => v === b[i] ? -1 : i).filter(i => i >= 0);
+    return diff.length <= 1 || (diff.length === 2 && diff[1] === diff[0] + 1 && a[diff[0]] === b[diff[1]] && a[diff[1]] === b[diff[0]]);
   }
-
-  const cleanQuery = query.replace(/[.\-\s]/g, '');
-
-  const results = OFFICIAL_CATALOG_DATA.filter((entry) => {
-    // System filter
-    if (system !== 'ALL' && entry.system !== system) {
-      return false;
-    }
-
-    // Terminal only filter
-    if (terminalOnly && !entry.terminal) {
-      return false;
-    }
-
-    // Specialty filter
-    if (options.specialtyTag && options.specialtyTag !== 'all') {
-      if (!entry.specialtyTags?.includes(options.specialtyTag)) {
-        return false;
-      }
-    }
-
-    if (!query) {
-      return true;
-    }
-
-    // Matching criteria
-    const codeClean = entry.code.toLowerCase().replace(/[.\-\s]/g, '');
-    const titleLower = entry.title.toLowerCase();
-    
-    // Direct code exact or prefix match (highest priority)
-    if (codeClean.includes(cleanQuery) || entry.code.toLowerCase().includes(query)) {
-      return true;
-    }
-
-    // Title match
-    if (titleLower.includes(query)) {
-      return true;
-    }
-
-    // Words token match
-    const queryTokens = query.split(/\s+/).filter(Boolean);
-    const matchesAllTokens = queryTokens.every((token) => 
-      titleLower.includes(token) ||
-      entry.synonyms?.some((s) => s.toLowerCase().includes(token)) ||
-      entry.inclusions?.some((i) => i.toLowerCase().includes(token)) ||
-      entry.hierarchy.chapter?.toLowerCase().includes(token) ||
-      entry.hierarchy.category?.toLowerCase().includes(token)
-    );
-
-    if (matchesAllTokens) {
-      return true;
-    }
-
-    // Synonyms match
-    if (entry.synonyms?.some((s) => s.toLowerCase().includes(query))) {
-      return true;
-    }
-
-    // Transcoding ICD-9 match
-    if (entry.transcodingICD9?.toLowerCase().includes(query)) {
-      return true;
-    }
-
-    return false;
-  });
-
-  // Sort with code matches first, then title relevance
-  return results
-    .sort((a, b) => {
-      const aCode = a.code.toLowerCase();
-      const bCode = b.code.toLowerCase();
-      const q = query.toLowerCase();
-
-      if (aCode === q && bCode !== q) return -1;
-      if (bCode === q && aCode !== q) return 1;
-      if (aCode.startsWith(q) && !bCode.startsWith(q)) return -1;
-      if (bCode.startsWith(q) && !aCode.startsWith(q)) return 1;
-      return 0;
-    })
-    .slice(0, limit);
+  const [short, long] = a.length < b.length ? [a,b] : [b,a];
+  let i = 0, j = 0, skipped = false;
+  while (i < short.length && j < long.length) {
+    if (short[i] === long[j]) { i++; j++; }
+    else if (skipped) return false;
+    else { skipped = true; j++; }
+  }
+  return true;
 }
 
-export function getCodeDetails(code: string): CatalogEntry | undefined {
-  return OFFICIAL_CATALOG_DATA.find((e) => e.code.toLowerCase() === code.toLowerCase().trim());
+export function searchCatalog(options: SearchOptions): CatalogEntry[] {
+  const query = normalizeSearch(options.query);
+  const codeQuery = normalizeCode(query);
+  const tokens = query.split(/\s+/).filter(Boolean);
+  const codeLike = /\d/.test(query) || /^[a-z]$/i.test(query);
+  const limit = options.limit === undefined ? 50 : Math.max(0, options.limit);
+  return LEGACY_CATALOG_DATA.filter(entry =>
+    (!options.system || options.system === 'ALL' || entry.system === options.system) &&
+    (!options.terminalOnly || entry.terminal)
+  ).map(entry => {
+    const code = normalizeCode(entry.code);
+    const title = normalizeSearch(entry.title);
+    const terms = [title, ...(entry.synonyms || []), ...(entry.inclusions || [])].map(normalizeSearch);
+    let score = !query ? 1 : 0;
+    if (query && code === codeQuery) score = 100;
+    else if (query && codeQuery && code.startsWith(codeQuery)) score = 90;
+    else if (query && title.includes(query)) score = 80;
+    else if (query && terms.some(term => term.includes(query))) score = 70;
+    else if (!codeLike && tokens.length && tokens.every(token => terms.some(term => term.includes(token)))) score = 60;
+    else if (!codeLike && tokens.length && tokens.every(token => token.length >= 4 && terms.some(term => term.split(/[^a-z]+/).some(word => oneEdit(token,word))))) score = 40;
+    if (score && options.specialtyTag && entry.specialtyTags?.includes(options.specialtyTag)) score += 1;
+    return {entry,score};
+  }).filter(row => row.score > 0).sort((a,b) => b.score - a.score || a.entry.code.localeCompare(b.entry.code)).slice(0,limit).map(row => row.entry);
+}
+
+export function getCodeDetails(code: string, system?: CatalogEntry['system']): CatalogEntry | undefined {
+  return LEGACY_CATALOG_DATA.find(entry => normalizeCode(entry.code) === normalizeCode(code) && (!system || entry.system === system));
 }
 
 export function getGuidedExamples(): GuidedCaseExample[] {
@@ -138,22 +92,13 @@ export function generateGuidedProposal(input: GuidedFormInput): GuidedProposalRe
   // Setting check
   if (input.setting === 'PS/OBI senza ricovero' || input.flusso === 'PS/OBI') {
     rulesApplied.push('R12: Selezione di sintomo/reperto anomalo in assenza di diagnosi definitiva');
-    if (input.diagnosiFinaleDoc === 'non_definita' || input.diagnosiFinaleDoc === 'sintomo_dispnea') {
+    if (input.diagnosiFinaleDoc === 'sintomo_dispnea') {
       primaryDiag = {
         code: 'R06.0',
         title: 'Dispnea',
         rationale: 'Nel setting di Pronto Soccorso/OBI senza ricovero e senza diagnosi eziologica accertata, il sintomo è la diagnosi principale corretta (Addendum E, R12).',
         system: 'ICD-10-IM',
         source: 'DM 23/10/2025 • FAD ISS Addendum E (p. 2)'
-      };
-    } else if (input.diagnosiFinaleDoc === 'sospetto_escluso') {
-      rulesApplied.push('R13: Categoria Z03 per sospetto escluso in assenza di sintomi attivi');
-      primaryDiag = {
-        code: 'Z03.4',
-        title: 'Osservazione per sospetto infarto del miocardio, escluso',
-        rationale: 'Paziente dimesso dopo osservazione OBI con sospetto escluso e senza riscontro di patologia correlata (R13).',
-        system: 'ICD-10-IM',
-        source: 'FAD ISS Tutorial 3 • Addendum E (p. 3)'
       };
     }
   } else {
@@ -214,7 +159,7 @@ export function generateGuidedProposal(input: GuidedFormInput): GuidedProposalRe
         rationale: 'Ipertensione in trattamento continuativo durante il ricovero.',
         system: 'ICD-10-IM',
         source: 'ICD-10-IM v. 2025',
-        confirmed: true
+        confirmed: false
       });
     }
     if (input.condizioniAssociate.includes('fa_parossistica')) {
@@ -224,17 +169,17 @@ export function generateGuidedProposal(input: GuidedFormInput): GuidedProposalRe
         rationale: 'Episodio aritmico trattato con farmaci antiaritmici o cardioversione.',
         system: 'ICD-10-IM',
         source: 'ICD-10-IM v. 2025',
-        confirmed: true
+        confirmed: false
       });
     }
     if (input.condizioniAssociate.includes('shock_cardiogeno')) {
       secondaryDiags.push({
         code: 'R57.0',
         title: 'Shock cardiogeno',
-        rationale: 'Complicanza maggiore (MCC) insorta con necessità di inotropi e monitoraggio invasivo.',
+        rationale: 'Condizione selezionata: verificare documentazione e rilevanza per l’episodio; nessuna attribuzione CC/MCC.',
         system: 'ICD-10-IM',
         source: 'ICD-10-IM v. 2025',
-        confirmed: true
+        confirmed: false
       });
     }
     if (input.condizioniAssociate.includes('irc_stadio1')) {
@@ -244,7 +189,7 @@ export function generateGuidedProposal(input: GuidedFormInput): GuidedProposalRe
         rationale: 'Comorbilità renale documentata formalmente con stadio terminale a 6 caratteri.',
         system: 'ICD-10-IM',
         source: 'ICD-10-IM v. 2025',
-        confirmed: true
+        confirmed: false
       });
     }
   }
@@ -257,22 +202,14 @@ export function generateGuidedProposal(input: GuidedFormInput): GuidedProposalRe
       rationale: 'Supporto ventilatorio non invasivo erogato durante la degenza.',
       system: 'CIPI',
       source: 'CIPI 2025 • Sezione 93',
-      confirmed: true
+      confirmed: false
     });
 
     if (!input.insufficienzaRespDocumentata) {
       rulesApplied.push('DISCIPLINA CLINICA: Presenza di CPAP documentata, ma nessuna diagnosi di insufficienza respiratoria registrata dal medico. Vietata la deduzione automatica di diagnosi da procedure o farmaci.');
-    } else {
-      secondaryDiags.push({
-        code: 'J96.0',
-        title: 'Insufficienza respiratoria acuta',
-        rationale: 'Insufficienza respiratoria acuta espressamente refertata in cartella con EGA documentata.',
-        system: 'ICD-10-IM',
-        source: 'ICD-10-IM v. 2025',
-        confirmed: true
-      });
     }
   }
+  if (input.insufficienzaRespDocumentata) missingInfo.push('Insufficienza respiratoria documentata: specificare tipo e acuzie; CPAP e sola diagnosi generica non autorizzano J96.0.');
 
   // Procedure checks
   if (input.procedureEseguite.includes('ptca_stent')) {
@@ -282,19 +219,12 @@ export function generateGuidedProposal(input: GuidedFormInput): GuidedProposalRe
       rationale: 'Procedura endovascolare percutanea coronarica (approccio B) con impianto di stent.',
       system: 'CIPI',
       source: 'CIPI 2025 • Sezione 36 (Tutorial 5, p. 7)',
-      confirmed: true
+      confirmed: false
     });
-    procs.push({
-      code: '88.55.00',
-      title: 'Arteriografia coronarica selettiva mediante catetere singolo (Coronarografia)',
-      rationale: 'Indagine angiografica diagnostica propedeutica all\'angioplastica.',
-      system: 'CIPI',
-      source: 'CIPI 2025 • Sezione 88',
-      confirmed: true
-    });
+
   }
 
-  if (input.procedureEseguite.includes('tavi')) {
+  if (input.procedureEseguite.includes('tavi') && ['transapicale', 'transfemorale'].includes(input.accessoChirurgico)) {
     const isApical = input.accessoChirurgico === 'transapicale';
     procs.push({
       code: isApical ? '35.21.6D' : '35.21.4B',
@@ -304,7 +234,7 @@ export function generateGuidedProposal(input: GuidedFormInput): GuidedProposalRe
       rationale: `Sostituzione valvolare percutanea con approccio ${isApical ? 'D (chirurgico apicale)' : 'B (transfemorale)'}.`,
       system: 'CIPI',
       source: 'CIPI 2025 • Sezione 35',
-      confirmed: true
+      confirmed: false
     });
   }
 
@@ -315,7 +245,7 @@ export function generateGuidedProposal(input: GuidedFormInput): GuidedProposalRe
       rationale: 'Intervento ortopedico maggiore a cielo aperto.',
       system: 'CIPI',
       source: 'CIPI 2025 • Sezione 81',
-      confirmed: true
+      confirmed: false
     });
   }
 
@@ -328,21 +258,23 @@ export function generateGuidedProposal(input: GuidedFormInput): GuidedProposalRe
       system: 'CIPI',
       source: 'CIPI 2025 • Sezione 00 (Tutorial 5, p. 13)',
       isComplementaryW: true,
-      confirmed: true
+      confirmed: false
     });
   }
 
-  // Antimicrobial resistance check
-  if (input.antibiogrammaResistenzaDoc) {
-    secondaryDiags.push({
-      code: 'Z16.1',
-      title: 'Resistenza ai betalattamici (es. MRSA, ESBL)',
-      rationale: 'Resistenza antibiotica accertata tramite referto colturale/antibiogramma formale.',
-      system: 'ICD-10-IM',
-      source: 'DM 23/10/2025 • ICD-10-IM v. 2025',
-      confirmed: true
-    });
+  if (input.antibiogrammaResistenzaDoc) missingInfo.push('Specificare microrganismo, resistenza e contesto clinico; nessun codice di resistenza assegnato automaticamente.');
+  if (input.procedureEseguite.includes('tavi') && !['transapicale','transfemorale'].includes(input.accessoChirurgico)) missingInfo.push('Specificare accesso TAVI documentato: non dedurre la via transfemorale.');
+  if (input.diagnosiFinaleDoc === 'sospetto_escluso') missingInfo.push('Specificare sospetto, sintomi, patologie pregresse e condizioni del flusso prima di proporre Z03/Z04.');
+  if (input.setting === 'PS/OBI senza ricovero' && input.flusso === 'SDO') missingInfo.push('PS/OBI senza ricovero non è compatibile con una scheda di ricovero SDO.');
+  if (input.flusso !== 'SDO') missingInfo.push('Regole specifiche del flusso selezionato da verificare; non applicare alla SDO attiva.');
+  if (input.dispositiviImpiantati.includes('robot') && !procs.some(p => !p.isComplementaryW)) {
+    const index = procs.findIndex(p => p.isComplementaryW);
+    if (index >= 0) procs.splice(index,1);
+    missingInfo.push('Il complemento W richiede una procedura di riferimento documentata e compatibile.');
   }
+  secondaryDiags.forEach(d => { d.confirmed = false; });
+  procs.forEach(p => { p.confirmed = false; });
+  missingInfo.push('Catalogo completo non riconciliato: proposte editoriali non validate, non applicabili alla scheda.');
 
   return {
     primaryDiagnosis: primaryDiag,
