@@ -1,0 +1,77 @@
+GINO ↔ SDO RECONCILER
+GUIDA OPERATIVA
+
+1. FINALITÀ
+Il programma riconcilia i flussi GINO/ISTAT con le SDO IVG e aborto spontaneo, senza necessità di scansionare sistematicamente le schede cartacee.
+
+L’endpoint operativo è composto da:
+- SCHEDE MANCANTI: episodi SDO senza corrispondente scheda GINO/ISTAT;
+- SCHEDE DA CORREGGERE: episodi correttamente identificati ma con uno o più dati discordanti.
+
+2. FILE DA CARICARE
+GINO:
+- usare i file *_DOWNLOAD.csv;
+- non è necessario caricare i *_TRACCIATO.csv;
+- caricare tutti i trimestri che compongono il periodo oggetto del controllo.
+
+SDO:
+- caricare i file .xlsx IVG e/o AS;
+- utilizzare le estrazioni che comprendono il comune/stato di residenza;
+- il periodo delle SDO deve coincidere con il periodo GINO.
+
+3. CONTROLLO PRELIMINARE DEL PERIODO
+Prima del matching il programma verifica automaticamente:
+- continuità dei trimestri GINO;
+- coerenza del periodo tra flussi IVG e AS;
+- corrispondenza tra intervallo GINO e periodo dichiarato nel file SDO.
+In caso di incoerenza il matching viene bloccato (fail closed).
+
+4. MATCHING
+Item principali:
+- data di nascita;
+- residenza;
+- compatibilità della data evento con il ricovero.
+
+Filtro clinico obbligatorio:
+- IVG: ICD9-CM 635.xx;
+- AS: ICD9-CM 632 o 634.xx.
+
+DRG 380/381 e procedure non sono utilizzati come chiave identificativa primaria.
+
+5. SCHEDE MANCANTI
+Sono riportate solo dopo esclusione di:
+- seconde SDO dello stesso episodio IVG;
+- ricoveri PENDING a cavallo della fine periodo;
+- episodi già collegati a una scheda da correggere.
+Per ogni caso il report indica nosologico, DOB, residenza, date di ricovero, DRG, diagnosi/procedure e istruzione operativa.
+
+6. SCHEDE DA CORREGGERE
+Il programma indica l’item preciso da verificare:
+- DATA_NASCITA
+- RESIDENZA
+- DATA_EVENTO
+- TRIMESTRE/DUPLICATO
+- TIPO_INTERVENTO/PROCEDURA
+- MATCH NON DETERMINABILE
+Vengono mostrati valore GINO, valore SDO ed episodio di riferimento.
+
+7. TESTO MAIL
+La scheda TESTO MAIL genera un testo pronto da copiare e incollare alla segreteria/reparto con:
+- casi da integrare;
+- casi da correggere;
+- spiegazione sintetica per ciascun episodio.
+È disponibile il pulsante “Copia testo mail negli appunti”.
+
+8. EXPORT
+“Esporta Excel” produce:
+- SCHEDE_MANCANTI
+- SCHEDE_DA_CORREGGERE
+- AUDIT_TECNICO
+- SINTESI
+- TESTO_MAIL
+
+9. PRIVACY
+Tutta l’elaborazione avviene localmente. Nessun file sanitario viene inviato all’esterno.
+
+10. REGOLA DI SICUREZZA
+Il programma identifica anomalie ma non modifica automaticamente i dati. Prima di correggere una fonte, verificare sempre la documentazione clinica/originale.

@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gino-sdo-reconciler"
+version = "0.1.0"
+description = "Riconciliazione locale GINO-ISTAT e SDO per IVG/AS"
+requires-python = ">=3.11"
+dependencies = ["openpyxl>=3.1,<4"]
+
+[project.scripts]
+gino-sdo-reconciler = "ivg_reconciler.gui:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
