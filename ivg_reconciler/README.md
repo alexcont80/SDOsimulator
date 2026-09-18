@@ -31,3 +31,24 @@ L'applicazione elabora i file **solo in locale** e non richiede diritti di ammin
 La GitHub Action produce un singolo `GINO_SDO_Reconciler.exe` con PyInstaller (`--onefile --windowed`). Il file può essere eseguito da una cartella utente senza installazione e senza privilegi amministrativi.
 
 Il workflow scarica al build l'elenco ufficiale dei comuni italiani dal permalink ISTAT e lo incorpora nell'eseguibile.
+
+
+## Controllo preliminare dei periodi
+
+Prima del matching l'applicazione verifica in modalità fail-closed che:
+- per ogni flusso presente (IVG/AS) esistano sia i file GINO sia i file SDO;
+- i trimestri dichiarati nei CSV GINO siano contigui;
+- il periodo dichiarato nei report XLSX SDO sia riconoscibile (es. `GEN-GIU 2026`, `1 sem 2026`);
+- l'intervallo GINO coincida esattamente con l'intervallo SDO;
+- i flussi elaborati nello stesso run coprano lo stesso periodo.
+
+In caso di incoerenza il matching non viene eseguito.
+
+## Testo mail
+
+Dopo il controllo viene generato automaticamente un testo mail pronto da copiare, con:
+- elenco puntuale delle **schede da integrare**;
+- elenco delle **schede da correggere/verificare**;
+- identificativi episodio, valori discordanti e azione richiesta.
+
+Il testo è disponibile sia nell'interfaccia (tab `TESTO MAIL`, pulsante copia negli appunti) sia nel foglio Excel `TESTO_MAIL`.
