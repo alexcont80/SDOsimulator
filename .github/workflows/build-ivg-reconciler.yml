@@ -42,7 +42,11 @@ jobs:
       - name: Smoke-test packaged EXE
         shell: pwsh
         run: |
-          $p = Start-Process -FilePath '.\dist\GINO_SDO_Reconciler.exe' -ArgumentList '--self-test' -PassThru -Wait
+          $p = Start-Process -FilePath '.\dist\GINO_SDO_Reconciler.exe' -ArgumentList '--self-test' -PassThru
+          if (-not $p.WaitForExit(30000)) {
+            $p.Kill()
+            throw "Self-test EXE timed out after 30 seconds"
+          }
           if ($p.ExitCode -ne 0) { throw "Self-test EXE failed with exit code $($p.ExitCode)" }
 
       - name: Upload portable EXE
