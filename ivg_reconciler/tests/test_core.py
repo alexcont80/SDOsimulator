@@ -1,8 +1,13 @@
 from datetime import date
+import csv
+import pytest
+from openpyxl import Workbook
 
 from ivg_reconciler.core import (
     GinoRecord, SdoRecord, reconcile, normalize_text
 )
+from ivg_reconciler.periods import validate_period_files
+from ivg_reconciler.mailtext import build_email_text
 
 
 def g(flow="IVG", prog="1", dob=date(1990,1,1), ev=date(2026,1,10), res="COMUNE A", q="Gennaio - Marzo", t="5", comp5=""):
@@ -97,3 +102,56 @@ def test_merge_unique_file_selection_logic():
     assert len(merged) == 2
     assert merged[0].endswith("one.csv")
     assert merged[1].endswith("two.csv")
+
+
+
+def _write_gino_period_csv(path, flow, year, quarter_label):
+    type_col = "TIPO_IVG" if flow == "IVG" else "TIPO_AS"
+    with open(path, "w", encoding="utf-8-sig", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=["ANNO", "TRIMESTRE", type_col], delimiter=";")
+        w.writeheader()
+        w.writerow({"ANNO": year, "TRIMESTRE": quarter_label, type_col: "5" if flow == "IVG" else "3"})
+
+
+def _write_sdo_period_xlsx(path, flow, period_text):
+    wb = Workbook()
+    ws = wb.active
+    ws["B2"] = "IVG - TEST" if flow == "IVG" else "ABORTI SPONTANEI - TEST"
+    ws["B3"] = f"Accettazioni/Dimissioni nel periodo: {period_text}"
+    wb.save(path)
+
+
+def test_period_check_accepts_matching_semester(tmp_path):
+    g1 = tmp_path / "283_16_0_20260101_IVG_DOWNLOAD.csv"
+    g2 = tmp_path / "283_16_0_20260401_IVG_DOWNLOAD.csv"
+    s1 = tmp_path / "ADT_RICOVERI_IVG_1_sem_2026.xlsx"
+    _write_gino_period_csv(g1, "IVG", 2026, "Gennaio - Marzo")
+    _write_gino_period_csv(g2, "IVG", 2026, "Aprile - Giugno")
+    _write_sdo_period_xlsx(s1, "IVG", "GEN-GIU 2026")
+    start, end, summary = validate_period_files([g1, g2], [s1])
+    assert start == date(2026, 1, 1)
+    assert end == date(2026, 6, 30)
+    assert summary.startswith("OK")
+
+
+def test_period_check_blocks_mismatch(tmp_path):
+    g1 = tmp_path / "283_16_0_20260101_IVG_DOWNLOAD.csv"
+    s1 = tmp_path / "ADT_RICOVERI_IVG_1_sem_2026.xlsx"
+    _write_gino_period_csv(g1, "IVG", 2026, "Gennaio - Marzo")
+    _write_sdo_period_xlsx(s1, "IVG", "GEN-GIU 2026")
+    with pytest.raises(ValueError, match="CONTROLLO PRELIMINARE PERIODI NON SUPERATO"):
+        validate_period_files([g1], [s1])
+
+
+def test_email_text_contains_operational_sections():
+    gg = g(prog="1", dob=date(1990,1,1), ev=date(2026,1,10), res="A")
+    ss1 = s(nos="1", dob=date(1990,1,1), adm=date(2026,1,9), dis=date(2026,1,10), res="A")
+    ss2 = s(nos="2", dob=date(1980,2,2), adm=date(2026,2,10), dis=date(2026,2,11), res="B")
+    r = reconcile([gg], [ss1, ss2])
+    r.period_start = date(2026,1,1)
+    r.period_end = date(2026,3,31)
+    subject, body = build_email_text(r)
+    assert "01/01/2026" in subject
+    assert "SCHEDE DA INTEGRARE" in body
+    assert "nosologico SDO 2" in body
+    assert "SCHEDE DA CORREGGERE / VERIFICARE" in body
