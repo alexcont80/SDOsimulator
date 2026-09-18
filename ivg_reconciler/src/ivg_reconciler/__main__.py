@@ -6,7 +6,6 @@ def _self_test():
     from datetime import date
     assert normalize_text("San Daniele del Friuli") == "SAN DANIELE DEL FRIULI"
     assert _quarter_end(date(2026, 2, 1)) == date(2026, 3, 31)
-    print("SELFTEST_OK")
 
 
 if __name__ == "__main__":
