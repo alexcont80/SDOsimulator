@@ -41,7 +41,20 @@ class App(tk.Tk):
         for c in range(4): top.columnconfigure(c, weight=1)
 
         self.file_status = ttk.Label(top, text="Nessun file caricato")
-        self.file_status.grid(row=3, column=0, columnspan=4, sticky="w", pady=(8,0))
+        self.file_status.grid(row=3, column=0, columnspan=4, sticky="w", pady=(8,4))
+
+        selected = ttk.LabelFrame(top, text="File effettivamente caricati", padding=6)
+        selected.grid(row=4, column=0, columnspan=4, sticky="ew")
+        selected.columnconfigure(0, weight=1)
+        selected.columnconfigure(1, weight=1)
+        ttk.Label(selected, text="GINO CSV").grid(row=0, column=0, sticky="w")
+        ttk.Label(selected, text="SDO XLSX").grid(row=0, column=1, sticky="w")
+        self.gino_list = tk.Listbox(selected, height=5)
+        self.sdo_list = tk.Listbox(selected, height=5)
+        self.gino_list.grid(row=1, column=0, sticky="ew", padx=(0,6))
+        self.sdo_list.grid(row=1, column=1, sticky="ew")
+        ttk.Button(selected, text="Svuota GINO", command=self.clear_gino).grid(row=2, column=0, sticky="w", pady=(4,0))
+        ttk.Button(selected, text="Svuota SDO", command=self.clear_sdo).grid(row=2, column=1, sticky="w", pady=(4,0))
 
         stats = ttk.Frame(self, padding=(12,0,12,8))
         stats.pack(fill="x")
@@ -70,20 +83,48 @@ class App(tk.Tk):
         frame.rowconfigure(0,weight=1); frame.columnconfigure(0,weight=1)
         return tree
 
+    @staticmethod
+    def _merge_unique(existing, new_files):
+        out = list(existing)
+        seen = {str(Path(p).resolve()).lower() for p in out}
+        for p in new_files:
+            key = str(Path(p).resolve()).lower()
+            if key not in seen:
+                out.append(p)
+                seen.add(key)
+        return out
+
     def pick_gino(self):
-        files = filedialog.askopenfilenames(title="Seleziona uno o più CSV GINO", filetypes=[("CSV", "*.csv"), ("Tutti i file", "*.*")])
+        files = filedialog.askopenfilenames(
+            title="Seleziona uno o più CSV GINO",
+            filetypes=[("CSV", "*.csv"), ("CSV maiuscolo", "*.CSV"), ("Tutti i file", "*.*")]
+        )
         if files:
-            self.gino_files = list(files)
+            self.gino_files = self._merge_unique(self.gino_files, files)
             self._update_status()
 
     def pick_sdo(self):
         files = filedialog.askopenfilenames(title="Seleziona uno o più XLSX SDO", filetypes=[("Excel", "*.xlsx"), ("Tutti i file", "*.*")])
         if files:
-            self.sdo_files = list(files)
+            self.sdo_files = self._merge_unique(self.sdo_files, files)
             self._update_status()
+
+    def clear_gino(self):
+        self.gino_files = []
+        self._update_status()
+
+    def clear_sdo(self):
+        self.sdo_files = []
+        self._update_status()
 
     def _update_status(self):
         self.file_status.config(text=f"GINO: {len(self.gino_files)} file | SDO: {len(self.sdo_files)} file")
+        self.gino_list.delete(0, tk.END)
+        self.sdo_list.delete(0, tk.END)
+        for p in self.gino_files:
+            self.gino_list.insert(tk.END, Path(p).name)
+        for p in self.sdo_files:
+            self.sdo_list.insert(tk.END, Path(p).name)
 
     def _clear(self, tree):
         for item in tree.get_children(): tree.delete(item)
@@ -106,7 +147,8 @@ class App(tk.Tk):
         for a in self.result.audit:
             self.audit_tree.insert("", "end", values=(a.category,a.flow,a.identifier,a.detail))
         self.stats_var.set(
-            f"GINO validi: {self.result.gino_count} | SDO: {self.result.sdo_count} | Match primari: {self.result.matched_count} | "
+            f"GINO letti: {self.result.gino_input_count} | GINO validi/deduplicati: {self.result.gino_count} | "
+            f"SDO: {self.result.sdo_count} | Match primari: {self.result.matched_count} | "
             f"Schede mancanti: {len(self.result.missing)} | Schede/item da correggere: {len(self.result.corrections)}"
         )
         messagebox.showinfo("Verifica completata", "Controllo completato. Consultare le due schede operative.")
