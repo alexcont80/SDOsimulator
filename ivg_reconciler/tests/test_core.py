@@ -86,4 +86,14 @@ def test_duplicate_across_quarters_becomes_correction():
     g2=g(prog="7", ev=date(2026,4,16), q="Aprile - Giugno")
     ss=s(nos="1",adm=date(2026,4,16),dis=date(2026,4,16))
     r=reconcile([g1,g2],[ss])
+    assert r.gino_input_count == 2
+    assert r.gino_count == 1
     assert any(c.item=="TRIMESTRE/DUPLICATO" for c in r.corrections)
+
+
+def test_merge_unique_file_selection_logic():
+    from ivg_reconciler.gui import App
+    merged = App._merge_unique(["C:/a/one.csv"], ["C:/a/two.csv", "C:/a/one.csv"])
+    assert len(merged) == 2
+    assert merged[0].endswith("one.csv")
+    assert merged[1].endswith("two.csv")
