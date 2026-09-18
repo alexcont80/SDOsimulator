@@ -1,0 +1,53 @@
+name: build-gino-sdo-reconciler
+
+on:
+  pull_request:
+    paths:
+      - 'ivg_reconciler/**'
+      - '.github/workflows/build-ivg-reconciler.yml'
+  workflow_dispatch:
+
+jobs:
+  test-and-build-windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ivg_reconciler
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install build dependencies
+        run: pip install -r requirements-build.txt
+
+      - name: Download official ISTAT municipality list
+        shell: pwsh
+        run: |
+          Invoke-WebRequest -Uri 'https://www.istat.it/storage/codici-unita-amministrative/Elenco-comuni-italiani.xlsx' -OutFile 'data/Elenco-comuni-italiani.xlsx'
+
+      - name: Build municipality map
+        run: python tools/build_comuni.py data/Elenco-comuni-italiani.xlsx data/comuni_istat.csv
+
+      - name: Unit tests
+        env:
+          PYTHONPATH: src
+        run: pytest -q
+
+      - name: Build portable EXE
+        run: pyinstaller --noconfirm --clean --onefile --windowed --name GINO_SDO_Reconciler --paths src --add-data "data/comuni_istat.csv;data" src/ivg_reconciler/__main__.py
+
+      - name: Smoke-test packaged EXE
+        shell: pwsh
+        run: |
+          $p = Start-Process -FilePath '.\dist\GINO_SDO_Reconciler.exe' -ArgumentList '--self-test' -PassThru -Wait
+          if ($p.ExitCode -ne 0) { throw "Self-test EXE failed with exit code $($p.ExitCode)" }
+
+      - name: Upload portable EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: GINO_SDO_Reconciler_Windows_x64
+          path: ivg_reconciler/dist/GINO_SDO_Reconciler.exe
+          if-no-files-found: error
