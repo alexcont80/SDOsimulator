@@ -80,6 +80,7 @@ def _deduplicate_gino(records: list[GinoRecord]) -> tuple[list[GinoRecord], list
 
 
 def reconcile(gino_records: list[GinoRecord], sdo_records: list[SdoRecord]) -> ReconciliationResult:
+    raw_gino_count = len(gino_records)
     gino, pre_corr, audit = _deduplicate_gino(gino_records)
     corrections = list(pre_corr)
     matched_sdo: set[str] = set()
@@ -290,6 +291,7 @@ def reconcile(gino_records: list[GinoRecord], sdo_records: list[SdoRecord]) -> R
         corrections=sorted(corrections, key=lambda x: (x.flow, x.gino_id, x.item)),
         audit=audit,
         matched_count=matched_count,
+        gino_input_count=raw_gino_count,
         gino_count=len(gino),
         sdo_count=len(sdo_records),
     )
