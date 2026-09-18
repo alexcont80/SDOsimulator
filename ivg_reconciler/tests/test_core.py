@@ -155,3 +155,12 @@ def test_email_text_contains_operational_sections():
     assert "SCHEDE DA INTEGRARE" in body
     assert "nosologico SDO 2" in body
     assert "SCHEDE DA CORREGGERE / VERIFICARE" in body
+
+
+def test_help_text_documents_operational_endpoints():
+    from ivg_reconciler.helptext import HELP_TEXT
+    assert "SCHEDE MANCANTI" in HELP_TEXT
+    assert "SCHEDE DA CORREGGERE" in HELP_TEXT
+    assert "CONTROLLO PRELIMINARE DEL PERIODO" in HELP_TEXT
+    assert "TESTO MAIL" in HELP_TEXT
+    assert "PRIVACY" in HELP_TEXT
