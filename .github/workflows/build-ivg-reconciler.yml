@@ -49,9 +49,16 @@ jobs:
           }
           if ($p.ExitCode -ne 0) { throw "Self-test EXE failed with exit code $($p.ExitCode)" }
 
-      - name: Upload portable EXE
+      - name: Prepare portable package
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path '.\package' | Out-Null
+          Copy-Item '.\dist\GINO_SDO_Reconciler.exe' '.\package\GINO_SDO_Reconciler.exe'
+          Copy-Item '.\GUIDA_UTENTE.txt' '.\package\GUIDA_UTENTE.txt'
+
+      - name: Upload portable package
         uses: actions/upload-artifact@v4
         with:
           name: GINO_SDO_Reconciler_Windows_x64
-          path: ivg_reconciler/dist/GINO_SDO_Reconciler.exe
+          path: ivg_reconciler/package/*
           if-no-files-found: error
