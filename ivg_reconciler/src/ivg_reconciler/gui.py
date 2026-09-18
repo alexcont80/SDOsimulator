@@ -6,6 +6,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 
 from .core import reconcile_files, export_report, build_email_text
+from .helptext import APP_TITLE, HELP_TEXT
 
 
 def resource_path(name: str) -> Path:
@@ -31,7 +32,8 @@ class App(tk.Tk):
     def _build(self):
         top = ttk.Frame(self, padding=12)
         top.pack(fill="x")
-        ttk.Label(top, text="Riconciliazione GINO ↔ SDO", font=("Segoe UI", 16, "bold")).grid(row=0, column=0, columnspan=4, sticky="w")
+        ttk.Label(top, text="Riconciliazione GINO ↔ SDO", font=("Segoe UI", 16, "bold")).grid(row=0, column=0, columnspan=3, sticky="w")
+        ttk.Button(top, text="?  Guida", command=self.show_help).grid(row=0, column=3, sticky="e")
         ttk.Label(top, text="Output operativo: SCHEDE MANCANTI e SCHEDE DA CORREGGERE. Elaborazione esclusivamente locale.").grid(row=1, column=0, columnspan=4, sticky="w", pady=(2, 12))
 
         ttk.Button(top, text="1. Carica file GINO CSV", command=self.pick_gino).grid(row=2, column=0, padx=(0,8), sticky="ew")
@@ -77,6 +79,38 @@ class App(tk.Tk):
         mail_scroll.grid(row=0, column=1, sticky="ns")
         self.mail_text.configure(yscrollcommand=mail_scroll.set)
         ttk.Button(mail_frame, text="Copia testo mail negli appunti", command=self.copy_mail).grid(row=1, column=0, sticky="w", pady=(8,0))
+
+    def show_help(self):
+        win = tk.Toplevel(self)
+        win.title(APP_TITLE)
+        win.geometry("900x720")
+        win.minsize(720, 520)
+        win.transient(self)
+
+        frame = ttk.Frame(win, padding=10)
+        frame.pack(fill="both", expand=True)
+        frame.rowconfigure(0, weight=1)
+        frame.columnconfigure(0, weight=1)
+
+        text = tk.Text(frame, wrap="word", font=("Segoe UI", 10))
+        text.grid(row=0, column=0, sticky="nsew")
+        scroll = ttk.Scrollbar(frame, orient="vertical", command=text.yview)
+        scroll.grid(row=0, column=1, sticky="ns")
+        text.configure(yscrollcommand=scroll.set)
+        text.insert("1.0", HELP_TEXT)
+        text.configure(state="disabled")
+
+        buttons = ttk.Frame(frame)
+        buttons.grid(row=1, column=0, columnspan=2, sticky="ew", pady=(8,0))
+        ttk.Button(buttons, text="Copia guida negli appunti", command=lambda: self._copy_text(HELP_TEXT, "Guida copiata negli appunti.")).pack(side="left")
+        ttk.Button(buttons, text="Chiudi", command=win.destroy).pack(side="right")
+
+    def _copy_text(self, value, confirmation=None):
+        self.clipboard_clear()
+        self.clipboard_append(value)
+        self.update()
+        if confirmation:
+            messagebox.showinfo("Copia completata", confirmation)
 
     def _make_tab(self, nb, title, columns):
         frame = ttk.Frame(nb)
