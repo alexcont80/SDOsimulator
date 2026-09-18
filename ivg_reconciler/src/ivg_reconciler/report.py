@@ -35,7 +35,8 @@ def export_report(result: ReconciliationResult, path: str | Path) -> None:
 
     ws4 = wb.create_sheet("SINTESI")
     ws4.append(["INDICATORE", "VALORE"])
-    ws4.append(["Record GINO validi", result.gino_count])
+    ws4.append(["Record GINO letti", result.gino_input_count])
+    ws4.append(["Record GINO validi/deduplicati", result.gino_count])
     ws4.append(["Record SDO nel perimetro", result.sdo_count])
     ws4.append(["Match primari effettuati", result.matched_count])
     ws4.append(["Schede mancanti", len(result.missing)])
