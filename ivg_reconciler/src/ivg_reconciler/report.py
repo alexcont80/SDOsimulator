@@ -5,6 +5,7 @@ from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment
 
 from .models import ReconciliationResult
+from .mailtext import build_email_text
 
 
 def export_report(result: ReconciliationResult, path: str | Path) -> None:
@@ -35,12 +36,27 @@ def export_report(result: ReconciliationResult, path: str | Path) -> None:
 
     ws4 = wb.create_sheet("SINTESI")
     ws4.append(["INDICATORE", "VALORE"])
+    start = getattr(result, "period_start", None)
+    end = getattr(result, "period_end", None)
+    ws4.append(["Controllo preliminare periodi", "OK"])
+    ws4.append(["Periodo verificato", f"{start.strftime('%d/%m/%Y')}–{end.strftime('%d/%m/%Y')}" if start and end else "n.d."])
+    ws4.append(["Dettaglio controllo periodi", getattr(result, "period_summary", "n.d.")])
     ws4.append(["Record GINO letti", result.gino_input_count])
     ws4.append(["Record GINO validi/deduplicati", result.gino_count])
     ws4.append(["Record SDO nel perimetro", result.sdo_count])
     ws4.append(["Match primari effettuati", result.matched_count])
     ws4.append(["Schede mancanti", len(result.missing)])
     ws4.append(["Schede/item da correggere", len(result.corrections)])
+
+    subject, body = build_email_text(result)
+    ws5 = wb.create_sheet("TESTO_MAIL")
+    ws5["A1"] = "OGGETTO"
+    ws5["A2"] = subject
+    ws5["A4"] = "TESTO MAIL PRONTO DA COPIARE"
+    ws5["A5"] = body
+    ws5["A5"].alignment = Alignment(vertical="top", wrap_text=True)
+    ws5.column_dimensions["A"].width = 120
+    ws5.row_dimensions[5].height = max(240, min(900, 15 * (body.count("\n") + 4)))
 
     header_fill = PatternFill("solid", fgColor="4472C4")
     header_font = Font(color="FFFFFF", bold=True)
@@ -57,5 +73,11 @@ def export_report(result: ReconciliationResult, path: str | Path) -> None:
         for row in sheet.iter_rows():
             for cell in row:
                 cell.alignment = Alignment(vertical="top", wrap_text=True)
+
+    for cell in ("A1", "A4"):
+        ws5[cell].fill = header_fill
+        ws5[cell].font = header_font
+    ws5["A2"].font = Font(bold=True)
+    ws5["A2"].alignment = Alignment(wrap_text=True)
 
     wb.save(Path(path))
