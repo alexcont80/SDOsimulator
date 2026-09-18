@@ -5,7 +5,7 @@ from pathlib import Path
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 
-from .core import reconcile_files, export_report
+from .core import reconcile_files, export_report, build_email_text
 
 
 def resource_path(name: str) -> Path:
@@ -21,8 +21,8 @@ class App(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Riconciliazione GINO ↔ SDO")
-        self.geometry("1120x720")
-        self.minsize(980, 620)
+        self.geometry("1180x820")
+        self.minsize(1000, 700)
         self.gino_files: list[str] = []
         self.sdo_files: list[str] = []
         self.result = None
@@ -66,6 +66,17 @@ class App(tk.Tk):
         self.missing_tree = self._make_tab(nb, "SCHEDE MANCANTI", ["Flusso","Nosologico","DOB","Residenza","Ricovero","DRG","Episodio da aggiungere"])
         self.corr_tree = self._make_tab(nb, "SCHEDE DA CORREGGERE", ["Flusso","ID GINO","Nosologico","Item","Valore GINO","Valore SDO","Indicazione"])
         self.audit_tree = self._make_tab(nb, "Audit tecnico", ["Categoria","Flusso","ID","Dettaglio"])
+
+        mail_frame = ttk.Frame(nb, padding=8)
+        nb.add(mail_frame, text="TESTO MAIL")
+        mail_frame.rowconfigure(0, weight=1)
+        mail_frame.columnconfigure(0, weight=1)
+        self.mail_text = tk.Text(mail_frame, wrap="word", font=("Segoe UI", 10))
+        self.mail_text.grid(row=0, column=0, sticky="nsew")
+        mail_scroll = ttk.Scrollbar(mail_frame, orient="vertical", command=self.mail_text.yview)
+        mail_scroll.grid(row=0, column=1, sticky="ns")
+        self.mail_text.configure(yscrollcommand=mail_scroll.set)
+        ttk.Button(mail_frame, text="Copia testo mail negli appunti", command=self.copy_mail).grid(row=1, column=0, sticky="w", pady=(8,0))
 
     def _make_tab(self, nb, title, columns):
         frame = ttk.Frame(nb)
@@ -146,12 +157,33 @@ class App(tk.Tk):
             self.corr_tree.insert("", "end", values=(c.flow,c.gino_id,c.sdo_nosologico,c.item,c.gino_value,c.sdo_value,c.instruction))
         for a in self.result.audit:
             self.audit_tree.insert("", "end", values=(a.category,a.flow,a.identifier,a.detail))
+        start = getattr(self.result, "period_start", None)
+        end = getattr(self.result, "period_end", None)
+        period = f"{start.strftime('%d/%m/%Y')}–{end.strftime('%d/%m/%Y')}" if start and end else "n.d."
         self.stats_var.set(
-            f"GINO letti: {self.result.gino_input_count} | GINO validi/deduplicati: {self.result.gino_count} | "
-            f"SDO: {self.result.sdo_count} | Match primari: {self.result.matched_count} | "
-            f"Schede mancanti: {len(self.result.missing)} | Schede/item da correggere: {len(self.result.corrections)}"
+            f"PERIODO OK: {period} | GINO letti: {self.result.gino_input_count} | "
+            f"GINO validi/deduplicati: {self.result.gino_count} | SDO: {self.result.sdo_count} | "
+            f"Match primari: {self.result.matched_count} | Schede mancanti: {len(self.result.missing)} | "
+            f"Schede/item da correggere: {len(self.result.corrections)}"
         )
-        messagebox.showinfo("Verifica completata", "Controllo completato. Consultare le due schede operative.")
+        subject, body = build_email_text(self.result)
+        self.mail_text.delete("1.0", tk.END)
+        self.mail_text.insert("1.0", f"OGGETTO: {subject}\n\n{body}")
+        messagebox.showinfo(
+            "Verifica completata",
+            f"Controllo preliminare periodi: OK ({period}).\n"
+            "Riconciliazione completata. Consultare SCHEDE MANCANTI, SCHEDE DA CORREGGERE e TESTO MAIL."
+        )
+
+    def copy_mail(self):
+        text = self.mail_text.get("1.0", tk.END).strip()
+        if not text:
+            messagebox.showwarning("Testo non disponibile", "Eseguire prima la verifica.")
+            return
+        self.clipboard_clear()
+        self.clipboard_append(text)
+        self.update()
+        messagebox.showinfo("Copiato", "Testo mail copiato negli appunti.")
 
     def export(self):
         if self.result is None:
