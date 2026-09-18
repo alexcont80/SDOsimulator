@@ -50,7 +50,7 @@ def _correction_sentence(c) -> str:
 
 def build_email_text(result: ReconciliationResult) -> tuple[str, str]:
     period = _period_label(result)
-    subject = f"Verifica flussi GINO/ISTAT–SDO – {period} – casi da correggere/integrate"
+    subject = f"Verifica flussi GINO/ISTAT–SDO – {period} – casi da correggere/integrare"
 
     lines = [
         "Buongiorno,",
