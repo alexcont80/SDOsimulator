@@ -123,6 +123,7 @@ class ReconciliationResult:
     corrections: list[Correction]
     audit: list[AuditItem]
     matched_count: int
+    gino_input_count: int
     gino_count: int
     sdo_count: int
 
